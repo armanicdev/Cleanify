@@ -2,15 +2,29 @@
 <html>
 <head>
   <title>Unsubscribe Extension</title>
+  
+  <!-- Include the CSS stylesheet for styling -->
   <link rel="stylesheet" type="text/css" href="popup.css">
+  
+  <!-- Include the JavaScript file for functionality -->
   <script src="popup.js"></script>
 </head>
 <body>
+  <!-- Popup container -->
   <div class="popup-container">
+    <!-- Extension title -->
     <h1 class="popup-title">Unsubify 1.0</h1>
+    
+    <!-- Message for users -->
     <p id="message" class="popup-subtitle">Please go to YouTube > Subscription > Manage to continue</p>
+    
+    <!-- Button to start the unsubscribe process -->
     <button id="startButton" class="popup-button start-button">Start Unsubscribe</button>
+    
+    <!-- Button to stop the unsubscribe process (initially disabled) -->
     <button id="stopButton" class="popup-button stop-button" disabled>Stop Unsubscribe</button>
+    
+    <!-- Attribution to the developer -->
     <p class="popup-subtitle2">Developed by ArmanicYT</p>
   </div>
 </body>
