@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Select important elements on the popup HTML
   const pages = document.querySelectorAll('.page');
   const gridItems = document.querySelectorAll('.grid-item');
   const backButton = document.getElementById('backButton');
@@ -8,9 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to show a specific page and hide others
   function showPage(pageId) {
+    // Hide all pages
     pages.forEach((page) => {
       page.style.display = 'none';
     });
+
+    // Show the selected page
     const pageToShow = document.getElementById(pageId);
     pageToShow.style.display = 'block';
   }
@@ -19,17 +23,20 @@ document.addEventListener('DOMContentLoaded', function () {
   gridItems.forEach((item, index) => {
     item.addEventListener('click', () => {
       if (index === 0) {
+        // Handle the first grid item, customize for others
         showPage('page1');
+
         // Store the active page in Chrome storage
         chrome.storage.local.set({ activePage: 'page1' });
       }
-      // Add similar logic for other grid items
     });
   });
 
   // Event listener for the back button
   backButton.addEventListener('click', () => {
+    // Show the default page when the back button is clicked
     showPage('defaultPage');
+
     // Store the active page as defaultPage
     chrome.storage.local.set({ activePage: 'defaultPage' });
   });
@@ -43,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Event listener for when the extension window is closed
+  // Event listener for when the extension popup is closed
   window.addEventListener('beforeunload', () => {
-    // Reset the extension when closing
+    // Reset the extension state when the popup is closed
     resetExtension();
   });
 
@@ -54,51 +61,76 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Functions from your second code snippet
 
+  // Function to set the message text in the popup
   function setMessageText(text) {
     messageElement.textContent = text;
   }
 
+  // Function to toggle the start and stop buttons
   function toggleButtons(startEnabled, stopEnabled) {
     startButton.disabled = !startEnabled;
     stopButton.disabled = !stopEnabled;
   }
 
+  // Function to check if the current tab is a YouTube Manage page
   function isYouTubeManagePage(url) {
     return url.startsWith('https://www.youtube.com/') && url.includes('/feed/channels');
   }
 
-  function checkYouTubeTab() {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      const activeTab = tabs[0];
-      if (isYouTubeManagePage(activeTab.url)) {
-        setMessageText('This extension is for bulk unsubscribing YouTube channels.');
-        toggleButtons(true, false);
-      } else {
-        setMessageText('Please go to YouTube > Subscription > Manage to continue');
-        toggleButtons(false, false);
-      }
+  // Function to store the extension state in Chrome storage
+  function setExtensionState(state) {
+    chrome.storage.local.set({ extensionState: state });
+  }
+
+  // Function to get the extension state from Chrome storage
+  function getExtensionState(callback) {
+    chrome.storage.local.get('extensionState', function (result) {
+      const state = result.extensionState || 'stopped'; // Default state is 'stopped'
+      callback(state);
     });
   }
 
+  // Event listener for the start button
   startButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       const activeTab = tabs[0];
       if (isYouTubeManagePage(activeTab.url)) {
         chrome.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
         toggleButtons(false, true);
+
+        // Set the extension state to 'started'
+        setExtensionState('started');
       } else {
         setMessageText('Please go to YouTube > Subscription > Manage to continue');
       }
     });
   });
 
+  // Event listener for the stop button
   stopButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       const activeTab = tabs[0];
       chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
       toggleButtons(true, false);
+
+      // Set the extension state to 'stopped'
+      setExtensionState('stopped');
     });
   });
 
-  checkYouTubeTab();
+  // Function to initialize the extension state
+  function initializeExtensionState() {
+    getExtensionState(function (state) {
+      if (state === 'started') {
+        // Extension was started previously, enable the stop button
+        toggleButtons(false, true);
+      } else {
+        // Extension was stopped or is in the default state, enable the start button
+        toggleButtons(true, false);
+      }
+    });
+  }
+
+  // Initialize the extension state
+  initializeExtensionState();
 });
