@@ -1,109 +1,150 @@
-/* Define custom fonts using @font-face */
-
-/* Product Sans Regular */
 @font-face {
-    font-family: 'Product Sans Regular';
+    font-family: "Product Sans Regular";
     font-style: normal;
     font-weight: 400;
-    src: url(fonts/regular.ttf) format("truetype");
-  }
-  
-  /* Product Sans Medium */
-  @font-face {
-    font-family: 'Product Sans Medium';
+    src: url(fonts/regular.ttf)format("truetype")
+}
+
+@font-face {
+    font-family: "Product Sans Medium";
     font-style: normal;
     font-weight: 400;
-    src: url(fonts/medium.ttf) format("truetype");
-  }
-  
-  /* Styling for popup button */
-  .popup-button {
-    border: none;
+    src: url(fonts/medium.ttf)format("truetype")
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
     cursor: pointer;
-    font-family: 'Product Sans Medium', sans-serif;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color .3s ease, color .3s ease, transform .3s ease
+}
+
+.back-button img {
+    width: 16px;
+    height: 16px;
+    fill: #9e9e9e;
+    transition: transform .3s ease, fill .3s ease
+}
+
+.back-button:hover {
+    background-color: #e0e0e0
+}
+
+.back-button:hover img {
+    fill: #212121;
+    transform: translateX(-4px)
+}
+
+.back-button:not(:hover) img {
+    transform: translateX(0)
+}
+
+.page {
+    display: none;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2)
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px
+}
+
+.grid-item {
+    background-color: #eee;
+    padding: 20px;
+    font-size: 18px;
+    cursor: pointer
+}
+
+.buy-premium,
+.grid-item,
+.popup-title {
+    font-family: "Product Sans Medium", sans-serif
+}
+
+.buy-premium {
+    padding: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    margin-top: 10px
+}
+
+#page1 {
+    background-color: #fff
+}
+
+.popup-title {
+    color: #212121;
+    font-size: 24px;
+    margin-bottom: 10px
+}
+
+.popup-subtitle {
+    color: #9e9e9e;
+    font-size: 14px;
+    margin-bottom: 26px
+}
+
+.popup-button {
+    border: 0;
+    cursor: pointer;
+    font-family: "Product Sans Medium", sans-serif;
     font-size: 14px;
     height: 44px;
-    outline: none;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-    width: 256px;
-  }
-  
-  /* Styling for popup container */
-  .popup-container {
-    margin: 0;
-    padding: 7px 20px;
-    text-align: center;
-  }
-  
-  /* Styling for popup subtitle */
-  .popup-subtitle {
-    color: #9e9e9e;
-    font-size: 14px;
-    margin-bottom: 26px;
-  }
-  
-  /* Styling for secondary popup subtitle */
-  .popup-subtitle2 {
-    color: #9e9e9e;
-    font-size: 14px;
-    margin-top: 26px;
-  }
-  
-  /* Styling for popup title */
-  .popup-title {
-    color: #212121;
-    font-family: 'Product Sans Medium', sans-serif;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  /* Styling for popup title container */
-  .popup-title-container {
-    display: flex;
-  }
-  
-  /* Styling for start button */
-  .start-button {
+    outline: 0;
+    transition: background-color .3s ease, color .3s ease;
+    width: 256px
+}
+
+.start-button {
     background-color: red;
     color: #fff;
-    margin-bottom: 10px;
-  }
-  
-  /* Hover effect for start button */
-  .start-button:hover {
-    background-color: rgba(255, 0, 0, 0.75);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
-  }
-  
-  /* Styling for stop button */
-  .stop-button {
+    margin-bottom: 10px
+}
+
+.start-button:hover {
+    background-color: rgba(255, 0, 0, .75);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2)
+}
+
+.stop-button {
     background-color: #eee;
     color: #212121;
     height: 44px;
-    width: 256px;
-  }
-  
-  /* Disabled state for stop button */
-  .stop-button:disabled {
+    width: 256px
+}
+
+.stop-button:disabled {
     background-color: #f5f5f5;
     color: #9e9e9e;
-    cursor: not-allowed;
-  }
-  
-  /* Hover effect for enabled stop button */
-  .stop-button:enabled:hover {
+    cursor: not-allowed
+}
+
+.stop-button:enabled:hover {
     background-color: #eee;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #212121;
-    opacity: 0.9;
-  }
-  
-  /* Body styling */
-  body {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2)
+}
+
+body {
     background-color: transparent;
-    font-family: 'Product Sans Regular', sans-serif;
+    font-family: "Product Sans Regular", sans-serif;
     margin: 0;
-    padding: 0;
-  }
-  
+    padding: 0
+}

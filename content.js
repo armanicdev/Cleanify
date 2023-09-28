@@ -14,23 +14,23 @@ async function unsubscribeFromChannels(channels) {
       console.log("Unsubscribe process stopped.");
       break;
     }
-    
+
     // Get the current channel element
     const channel = channels[i];
-    
+
     // Find the "Unsubscribe" button for the channel
     const unsubscribeButton = channel.querySelector('[aria-label^="Unsubscribe from"]');
-    
+
     if (unsubscribeButton) {
       // Click the "Unsubscribe" button
       unsubscribeButton.click();
-      
+
       // Wait for a short delay
       await new Promise((resolve) => setTimeout(resolve, UNSUBSCRIBE_DELAY_TIME));
-      
+
       // Find the confirmation button for unsubscribing
       const confirmButton = document.querySelector('yt-confirm-dialog-renderer [aria-label^="Unsubscribe"]');
-      
+
       if (confirmButton) {
         // Click the confirmation button
         confirmButton.click();
