@@ -46,10 +46,6 @@
     transform: translateX(-4px);
 }
 
-.back-button:not(:hover) img {
-    transform: translateX(0);
-}
-
 /* Styling for pages */
 .page {
     display: none;
@@ -58,7 +54,8 @@
     padding: 20px;
     background-color: #fff;
     width: 300px;
-    height: auto; /* Make it adjust to content */
+    height: auto;
+    /* Make it adjust to content */
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
 
