@@ -38,7 +38,8 @@
     flex-grow: 1;
     /* Allow the title to take up available space */
     font-size: 24px;
-    margin: 0 0 0 16px; /* Add 16px left margin */
+    margin: 0 0 0 16px;
+    /* Add 16px left margin */
     font-weight: 100;
     color: var(--text-light);
     display: flex;
@@ -125,7 +126,8 @@ body:not(:hover) .dropdown-content {
     display: none;
     text-align: center;
     position: relative;
-    padding: 20px;
+    padding: 10px;
+    /* Reduced padding to 10px */
     background-color: var(--background-light);
     color: var(--text-light);
     width: 300px;
