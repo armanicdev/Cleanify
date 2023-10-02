@@ -1,3 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-  <text id="dot" fill="#707070" font-size="22" font-family="FontAwesome6Pro-Light, 'Font Awesome \36  Pro'" font-weight="300"><tspan x="-2.75" y="19"></tspan></text>
+  <g id="dot" transform="translate(-1928 -4258)">
+    <rect id="Rectangle_586" data-name="Rectangle 586" width="22" height="22" transform="translate(1928 4258)" fill="none"/>
+    <path id="dot-2" data-name="dot" d="M11,16.25a1.375,1.375,0,1,0,1.375,1.375A1.375,1.375,0,0,0,11,16.25Zm0-6.875a1.375,1.375,0,1,0,1.375,1.375A1.375,1.375,0,0,0,11,9.375Zm1.375-5.5A1.375,1.375,0,1,0,11,5.25,1.375,1.375,0,0,0,12.375,3.875Z" transform="translate(1928 4258)" fill="#707070"/>
+  </g>
 </svg>
