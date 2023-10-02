@@ -126,14 +126,14 @@ body:not(:hover) .dropdown-content {
     display: none;
     text-align: center;
     position: relative;
-    padding: 10px;
-    /* Reduced padding to 10px */
+    padding: 10px 20px 20px 20px; /* Set the top padding to 20px */
     background-color: var(--background-light);
     color: var(--text-light);
     width: 300px;
     height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
+
 
 @media (prefers-color-scheme: dark) {
     .page {
