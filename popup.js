@@ -1,9 +1,7 @@
 // Function to display a specific page by its ID
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
-  pages.forEach((page) => {
-    page.style.display = 'none';
-  });
+  pages.forEach(page => (page.style.display = 'none'));
 
   const pageToShow = document.getElementById(pageId);
   pageToShow.style.display = 'block';
@@ -11,7 +9,7 @@ function showPage(pageId) {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Select elements from the DOM
-  const gridItems = document.querySelectorAll('.grid-item'); // Add back grid items
+  const gridItems = document.querySelectorAll('.grid-item');
   const backButton = document.getElementById('backButton');
   const startButton = document.getElementById('startButton');
   const stopButton = document.getElementById('stopButton');
@@ -35,16 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to reset the extension's active page
   function resetExtension() {
-    chrome.storage.local.get('activePage', function (result) {
+    chrome.storage.local.get('activePage', result => {
       const activePage = result.activePage || 'defaultPage';
       showPage(activePage);
     });
   }
 
   // Add a beforeunload event listener to reset the extension
-  window.addEventListener('beforeunload', () => {
-    resetExtension();
-  });
+  window.addEventListener('beforeunload', resetExtension);
 
   // Initialize the extension page
   resetExtension();
@@ -62,26 +58,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to check if a URL is a YouTube Manage page
   function isYouTubeManagePage(url) {
-    return url.startsWith('https://www.youtube.com/') && url.includes('/feed/channels');
+    return (
+      url.startsWith('https://www.youtube.com/') && url.includes('/feed/channels')
+    );
   }
 
   // Add click event listener to the start button
-  startButton.addEventListener('click', function () {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  startButton.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       const activeTab = tabs[0];
       if (isYouTubeManagePage(activeTab.url)) {
         chrome.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
         toggleButtons(false, true);
-      }
-      else {
-        setMessageText('Please go to YouTube > Subscription > Manage to continue');
+      } else {
+        setMessageText(
+          'Please go to YouTube > Subscription > Manage to continue'
+        );
       }
     });
   });
 
   // Add click event listener to the stop button
-  stopButton.addEventListener('click', function () {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  stopButton.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       const activeTab = tabs[0];
       chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
       toggleButtons(true, false);
