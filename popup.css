@@ -8,13 +8,11 @@
     --grid-background-dark: #333333;
     --grid-text-dark: #ffffff;
     --text-primary-light: #212121;
-    --text-primary-dark: #ffffff;
 }
 
 .popup-container {
     background-color: var(--background-light);
     transition: background-color 0.3s ease-in-out;
-    /* Adjust duration and easing as needed */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,15 +39,12 @@
 
 .separator {
     border-bottom: 1px solid #e0e0e0;
-    /* Light mode color and thickness */
     margin-bottom: 10px;
-    /* Spacing below the separator */
 }
 
 @media (prefers-color-scheme: dark) {
     .separator {
         border-bottom: 1px solid #313131;
-        /* Dark mode color and thickness */
     }
 }
 
@@ -147,7 +142,6 @@ body:not(:hover) .dropdown-content {
     width: 300px;
     height: auto;
     transition: opacity 0.2s ease-in-out;
-    /* Adjust duration and easing as needed */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -264,7 +258,7 @@ body:not(:hover) .dropdown-content {
     font-size: 16px;
     text-align: left;
     margin-bottom: 20px;
-    margin-top: 20px
+    margin-top: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -273,12 +267,12 @@ body:not(:hover) .dropdown-content {
     }
 }
 
-
 @media (prefers-color-scheme: dark) {
     .back-button .dot-icon {
         filter: brightness(0) invert(1);
     }
 }
+
 
 .custom-button {
     padding: 20px;
@@ -319,6 +313,11 @@ body:not(:hover) .dropdown-content {
         background-color: var(--grid-background-dark);
         color: var(--text-dark);
     }
+}
+
+.start-button:hover,
+.stop-button:hover {
+    transform: scale(1.04);
 }
 
 body {
