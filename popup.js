@@ -18,8 +18,6 @@ function showPage(pageId) {
   pageToShow.style.position = 'relative';
 }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
   const stopButton = document.getElementById('stopButton');
@@ -76,9 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   stopButton.addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
-      chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
-      toggleButtons(false, false);
-      chrome.storage.local.set({ startButtonEnabled: true, stopButtonEnabled: false });
+      if (!stopButton.classList.contains('disabled')) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
+        toggleButtons(true, false);
+        chrome.storage.local.set({ startButtonEnabled: true, stopButtonEnabled: false });
+      }
     });
   });
 
