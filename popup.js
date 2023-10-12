@@ -1,11 +1,24 @@
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
-  pages.forEach((page) => (page.style.display = 'none'));
   const pageToShow = document.getElementById(pageId);
-  if (pageToShow) {
-    pageToShow.style.display = 'block';
+
+  if (!pageToShow) {
+    return;
   }
+
+  pages.forEach((page) => {
+    page.style.opacity = '0';
+    page.style.pointerEvents = 'none';
+    page.style.position = 'absolute';
+  });
+
+  pageToShow.style.display = 'block';
+  pageToShow.style.opacity = '1';
+  pageToShow.style.pointerEvents = 'auto';
+  pageToShow.style.position = 'relative';
 }
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
@@ -64,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   stopButton.addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
-      toggleButtons(true, false);
+      toggleButtons(false, false);
       chrome.storage.local.set({ startButtonEnabled: true, stopButtonEnabled: false });
     });
   });
