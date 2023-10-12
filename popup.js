@@ -1,6 +1,6 @@
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
-  pages.forEach(page => (page.style.display = 'none'));
+  pages.forEach((page) => (page.style.display = 'none'));
   const pageToShow = document.getElementById(pageId);
   if (pageToShow) {
     pageToShow.style.display = 'block';
@@ -14,43 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const backButton = document.getElementById('backButton');
   const gridItems = document.querySelectorAll('.grid-item');
 
-  const setMessageText = text => {
+  const setMessageText = (text) => {
     messageElement.textContent = text;
   };
 
-  const resetExtension = () => {
-    chrome.storage.local.get('activePage', ({ activePage }) => {
-      const pageToShow = activePage || 'defaultPage';
-      showPage(pageToShow);
-    });
-  };
-
-  const isYouTubeFeedTab = url => {
-    return url.startsWith('https://www.youtube.com/feed/channels');
-  };
-
   const toggleButtons = (startEnabled, stopEnabled) => {
-    if (startEnabled) {
-      startButton.classList.remove('disabled');
-    } else {
-      startButton.classList.add('disabled');
-    }
-
-    if (stopEnabled) {
-      stopButton.classList.remove('disabled');
-    } else {
-      stopButton.classList.add('disabled');
-    }
+    console.log('Toggle buttons called with:', startEnabled, stopEnabled);
+    startButton.classList.toggle('disabled', !startEnabled);
+    stopButton.classList.toggle('disabled', !stopEnabled);
   };
 
-
-  const checkYouTubeTab = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
-      toggleButtons(isYouTubeFeedTab(activeTab?.url), false);
-    });
-  };
-
-  checkYouTubeTab();
+  function isYouTubeFeedTab(url) {
+    return url.startsWith('https://www.youtube.com/feed/channels');
+  }
 
   gridItems.forEach((item, index) => {
     item.addEventListener('click', () => {
@@ -69,25 +45,58 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('beforeunload', resetExtension);
   resetExtension();
 
+  chrome.tabs.onActivated.addListener(({ tabId }) => {
+    checkYouTubeTab(tabId);
+  });
+
   startButton.addEventListener('click', () => {
-    if (!startButton.classList.contains('disabled')) {
-      chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
-        if (isYouTubeFeedTab(activeTab?.url)) {
-          chrome.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
-          toggleButtons(false, true);
-        } else {
-          setMessageText('Please go to YouTube > Subscription > Manage to continue');
-        }
-      });
-    }
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (isYouTubeFeedTab(activeTab?.url)) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
+        toggleButtons(false, true);
+        chrome.storage.local.set({ startButtonEnabled: false, stopButtonEnabled: true });
+      } else {
+        setMessageText('Please go to YouTube > Subscription > Manage to continue');
+      }
+    });
   });
 
   stopButton.addEventListener('click', () => {
-    if (!stopButton.classList.contains('disabled')) {
-      chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
-        toggleButtons(true, false);
-      });
-    }
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
+      toggleButtons(true, false);
+      chrome.storage.local.set({ startButtonEnabled: true, stopButtonEnabled: false });
+    });
+  });
+
+  chrome.storage.local.get(['startButtonEnabled', 'stopButtonEnabled'], ({ startButtonEnabled, stopButtonEnabled }) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      const url = activeTab?.url || '';
+      const isYouTubeTab = isYouTubeFeedTab(url);
+
+      if (isYouTubeTab && url.startsWith('https://www.youtube.com/feed/channels')) {
+        toggleButtons(startButtonEnabled !== false, stopButtonEnabled === true);
+      } else {
+        toggleButtons(false, false);
+      }
+    });
   });
 });
+
+function resetExtension() {
+  chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage, startButtonEnabled, stopButtonEnabled }) => {
+    const pageToShow = activePage || 'defaultPage';
+    showPage(pageToShow);
+    toggleButtons(startButtonEnabled || false, stopButtonEnabled || false);
+  });
+}
+
+function checkYouTubeTab(tabId) {
+  chrome.tabs.get(tabId, (tab) => {
+    if (tab) {
+      const url = tab.url || '';
+      if (isYouTubeFeedTab(url)) {
+      }
+    }
+  });
+}
