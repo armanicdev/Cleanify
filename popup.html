@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Unsubscribe Extension</title>
   <link rel="stylesheet" type="text/css" href="popup.css">
   <script src="popup.js"></script>
 </head>
+
 <body>
   <div class="popup-container">
     <!-- Header for Default Page -->
@@ -18,27 +20,33 @@
       </div>
 
       <div class="grid-container">
-        <div class="grid-item" id="grid1">Grid 1</div>
-        <div class="grid-item" id="grid2">Grid 2</div>
-        <div class="grid-item" id="grid3">Grid 3</div>
-        <div class="grid-item" id="grid4">Grid 4</div>
+        <div class="grid-item" id="grid1">Subscription</div>
+        <div class="grid-item" id="grid2">Likes</div>
+        <div class="grid-item" id="grid3">Watch Later</div>
+        <div class="grid-item" id="grid4">History</div>
       </div>
-      <div class="buy-premium">Buy Premium 43% Off</div>
+      <div class="buy-premium">Buy Premium</div>
     </div>
 
-   <!-- Header for Page 1 -->
+    <!-- Header for Page 1 -->
     <div class="page" id="page1">
       <div class="header">
         <div class="back-button dot-container" id="backButton">
           <img src="images/back.svg" alt="Back" width="20" height="20" class="header-icon dot-icon">
         </div>
-        <h1 class="header-title">Cleanifier 1.0</h1>
+        <h1 class="header-title">Subscription</h1>
         <div class="dot-container">
           <img src="images/dot.svg" alt="Dot" width="20" height="20" class="header-icon dot-icon">
         </div>
       </div>
-      <p id="message" class="popup-subtitle">Please go to YouTube > Subscription > Manage to continue</p>
-      <p class="popup-subtitle2">Developed by ArmanicYT</p>
+      <div class="separator"></div>
+      <p id="message" class="popup-subtitle">Please go to YouTube &gt; Subscription &gt;<br> Manage to continue</p>
+      <div id="startButton" class="custom-button start-button" disabled>
+        Start Unsubscribing
+      </div>
+      <div id="stopButton" class="custom-button stop-button" disabled>
+        Stop Unsubscribing
+      </div>
     </div>
 
     <!-- Pages 2 to 4 (Similar content) -->
@@ -77,4 +85,5 @@
     </div>
   </div>
 </body>
+
 </html>
