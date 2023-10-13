@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const stopButton2 = document.getElementById('stopButton2');
   const startButton3 = document.getElementById('startButton3');
   const stopButton3 = document.getElementById('stopButton3');
+  const startButton4 = document.getElementById('startButton4');
+  const stopButton4 = document.getElementById('stopButton4');
 
   const setMessageText = (text) => {
     messageElement.textContent = text;
@@ -47,6 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
     startButton3.classList.toggle('disabled', !startEnabled);
     stopButton3.classList.toggle('disabled', !stopEnabled);
   };
+
+  const toggleButtons4 = (startEnabled, stopEnabled) => {
+    startButton4.classList.toggle('disabled', !startEnabled);
+    stopButton4.classList.toggle('disabled', !stopEnabled);
+  };
+
+  toggleButtons4(false, false);
 
   function isYouTubeFeedTab(url) {
     return url.startsWith('https://www.youtube.com/feed/channels');
@@ -95,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButtons(false, true);
         chrome.storage.local.set({ startButtonEnabled: false, stopButtonEnabled: true });
       } else {
-        setMessageText('Please go to YouTube > Subscription > Manage to continue');
       }
     });
   });
@@ -117,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButtons2(false, true);
         chrome.storage.local.set({ startButton2Enabled: false, stopButton2Enabled: true });
       } else {
-        setMessageText('Please go to the specified YouTube playlist to continue');
       }
     });
   });
@@ -140,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButtons3(false, true);
         chrome.storage.local.set({ startButton3Enabled: false, stopButton3Enabled: true });
       } else {
-        setMessageText('Please go to the specified YouTube playlist to continue');
       }
     });
   });
@@ -195,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 function resetExtension() {
   chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage, startButtonEnabled, stopButtonEnabled }) => {
