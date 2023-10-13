@@ -26,7 +26,8 @@
         "https://www.youtube.com/*"
       ],
       "js": [
-        "content.js"
+        "content.js",
+        "content-dislike.js"
       ],
       "run_at": "document_end"
     }

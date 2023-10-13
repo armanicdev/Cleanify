@@ -49,46 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
     return url.startsWith('https://www.youtube.com/playlist?list=LL');
   }
 
+  const handleGridItemClick = (index) => {
+    const pageId = `page${index + 1}`;
+    showPage(pageId);
+    chrome.storage.local.set({ activePage: pageId });
+  };
+
   gridItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      if (index === 0) {
-        showPage('page1');
-        chrome.storage.local.set({ activePage: 'page1' });
-      } else if (index === 1) {
-        showPage('page2');
-        chrome.storage.local.set({ activePage: 'page2' });
-      } else if (index === 2) {
-        showPage('page3');
-        chrome.storage.local.set({ activePage: 'page3' });
-      } else if (index === 3) {
-        showPage('page4');
-        chrome.storage.local.set({ activePage: 'page4' });
-      }
-    });
+    item.addEventListener('click', () => handleGridItemClick(index));
   });
 
-  backButton.addEventListener('click', () => {
+  const handleBackButtonClick = () => {
     showPage('defaultPage');
     chrome.storage.local.set({ activePage: 'defaultPage' });
-  });
+  };
 
-  const backButton2 = document.getElementById('backButton2');
-  backButton2.addEventListener('click', () => {
-    showPage('defaultPage');
-    chrome.storage.local.set({ activePage: 'defaultPage' });
-  });
-
-  const backButton3 = document.getElementById('backButton3');
-  backButton3.addEventListener('click', () => {
-    showPage('defaultPage');
-    chrome.storage.local.set({ activePage: 'defaultPage' });
-  });
-
-  const backButton4 = document.getElementById('backButton4');
-  backButton4.addEventListener('click', () => {
-    showPage('defaultPage');
-    chrome.storage.local.set({ activePage: 'defaultPage' });
-  });
+  backButton.addEventListener('click', handleBackButtonClick);
+  backButton2.addEventListener('click', handleBackButtonClick);
+  backButton3.addEventListener('click', handleBackButtonClick);
+  backButton4.addEventListener('click', handleBackButtonClick);
 
   window.addEventListener('beforeunload', resetExtension);
   resetExtension();
@@ -122,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
   startButton2.addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, async ([activeTab]) => {
       if (isYouTubeLikeTab(activeTab?.url)) {
-        chrome.runtime.sendMessage({ action: 'startDislike' }); // Send message to background.js
+        chrome.tabs.sendMessage(activeTab.id, { action: 'startDislike', tabId: activeTab.id });
         toggleButtons2(false, true);
         chrome.storage.local.set({ startButton2Enabled: false, stopButton2Enabled: true });
       } else {
@@ -131,11 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-
   stopButton2.addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (!stopButton2.classList.contains('disabled')) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'stopDislike' });
+        chrome.tabs.sendMessage(activeTab.id, { action: 'stopDislike', tabId: activeTab.id });
         toggleButtons2(true, false);
         chrome.storage.local.set({ startButton2Enabled: true, stopButton2Enabled: false });
       }
@@ -173,7 +151,6 @@ function resetExtension() {
   chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage, startButtonEnabled, stopButtonEnabled }) => {
     const pageToShow = activePage || 'defaultPage';
     showPage(pageToShow);
-    toggleButtons(startButtonEnabled || false, stopButtonEnabled || false);
   });
 }
 

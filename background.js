@@ -1,14 +1,29 @@
 chrome.runtime.onMessage.addListener((message, sender) => {
-  const isStartOrStopAction = message.action === 'startUnsubscribe' || message.action === 'stopUnsubscribe';
-  const isYouTubeTab = sender.tab && sender.tab.url && sender.tab.url.startsWith('https://www.youtube.com/feed/channels');
+  console.log('Message received:', message);
 
-  if (isStartOrStopAction && isYouTubeTab) {
-    chrome.scripting.executeScript({
-      target: { tabId: sender.tab.id },
-      function: (message) => {
-        chrome.runtime.sendMessage(message);
-      },
-      args: [message],
-    });
+  if (message.action === 'startUnsubscribe' || message.action === 'stopUnsubscribe') {
+    sendToContentScript(sender.tab.id, message);
+  } else if (message.action === 'startDislike' || message.action === 'stopDislike') {
+    sendToContentDislikeScript(sender.tab.id, message);
   }
 });
+
+function sendToContentScript(tabId, message) {
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    function: (message) => {
+      chrome.runtime.sendMessage(message);
+    },
+    args: [message],
+  });
+}
+
+function sendToContentDislikeScript(tabId, message) {
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    function: (message) => {
+      chrome.runtime.sendMessage(message);
+    },
+    args: [message],
+  });
+}
