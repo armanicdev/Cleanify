@@ -1,4 +1,4 @@
-let stopDislikeFlag = false;
+let stopDislikeFlag = false; // Flag to indicate whether to stop disliking
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'startDislike') {
@@ -13,6 +13,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 async function deleteLikedVideos() {
+    'use strict';
+
     console.log('Deleting liked videos');
 
     // Helper function for sleep
@@ -20,36 +22,32 @@ async function deleteLikedVideos() {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    async function processItem(i) {
+    const items = document.querySelectorAll(
+        `#primary ytd-playlist-video-renderer yt-icon-button.dropdown-trigger > button[aria-label]`
+    );
+
+    for (let i = 0; i < items.length && !stopDislikeFlag; i++) {
         console.log(`Clicking item ${i + 1}`);
-        const items = document.querySelectorAll(
-            `#primary ytd-playlist-video-renderer yt-icon-button.dropdown-trigger > button[aria-label]`
-        );
+        items[i].click();
 
-        if (i < items.length && !stopDislikeFlag) {
-            items[i].click();
+        // Replace the following timeout with an await sleep
+        await sleep(500);
 
-            // Replace the following timeout with an await sleep
-            await sleep(500);
-
-            const menuPopup = document.querySelector(
+        if (
+            document.querySelector(
                 `tp-yt-paper-listbox.style-scope.ytd-menu-popup-renderer`
-            );
-
-            if (menuPopup && menuPopup.lastElementChild) {
-                console.log('Disliking video');
-                menuPopup.lastElementChild.click();
-            } else {
-                console.log('Unable to find dislike option');
-            }
-
-            // Process the next item after a delay
-            setTimeout(() => processItem(i + 1), 500);
+            ).lastElementChild
+        ) {
+            console.log('Disliking video');
+            document
+                .querySelector(
+                    `tp-yt-paper-listbox.style-scope.ytd-menu-popup-renderer`
+                )
+                .lastElementChild.click();
         } else {
-            console.log('Finished deleting liked videos');
+            console.log('Unable to find dislike option');
         }
     }
 
-    // Start processing items from the beginning
-    processItem(0);
+    console.log('Finished deleting liked videos');
 }

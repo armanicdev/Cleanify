@@ -38,12 +38,14 @@ function unsubscribeChannel() {
         const confirmButton = document.getElementById('confirm-button').querySelector("[aria-label^='Unsubscribe'");
         if (confirmButton) {
           confirmButton.click();
+          // Remove the unsubscribed channel from the DOM
+          const channelToRemove = channelRenderers[i];
+          channelToRemove.parentNode.removeChild(channelToRemove);
         }
       }, 300);
 
-      i++;
       console.log(`${i} unsubscribed`);
-      console.log(`${channelCount - i} remaining`);
+      console.log(`${channelCount - i - 1} remaining`);
     }
   } else {
     clearInterval(unsubscribeInterval);
