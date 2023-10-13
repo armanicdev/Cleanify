@@ -1,54 +1,52 @@
-const UNSUBSCRIBE_DELAY_TIME = 500;
-let isUnsubscribing = false;
+let stopUnsubscribe = false;
+let unsubscribeInterval;
 
-async function unsubscribeFromChannels(channels, currentIndex = 0) {
-  if (!isUnsubscribing) {
-    console.log("Unsubscribe process stopped.");
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.action === 'startUnsubscribe') {
+    console.log("Started unsubscribing");
+    stopUnsubscribe = false;
+    startUnsubscribe();
+  } else if (message.action === 'stopUnsubscribe') {
+    console.log("Stopped unsubscribing");
+    stopUnsubscribe = true;
+    clearInterval(unsubscribeInterval);
+  }
+});
+
+function startUnsubscribe() {
+  i = 0; // Reset the counter
+  unsubscribeInterval = setInterval(unsubscribeChannel, 500);
+}
+
+function unsubscribeChannel() {
+  if (stopUnsubscribe) {
+    clearInterval(unsubscribeInterval);
+    console.log("Unsubscribe process stopped");
     return;
   }
 
-  if (currentIndex < channels.length) {
-    const channel = channels[currentIndex];
-    const unsubscribeButton = channel.querySelector('[aria-label^="Unsubscribe from"]');
+  const channelRenderers = Array.from(document.getElementsByTagName('ytd-channel-renderer'));
+  const channelCount = channelRenderers.length;
+
+  if (i < channelCount) {
+    const unsubscribeButton = channelRenderers[i].querySelector("[aria-label^='Unsubscribe from']");
 
     if (unsubscribeButton) {
       unsubscribeButton.click();
-      await new Promise((resolve) => setTimeout(resolve, UNSUBSCRIBE_DELAY_TIME));
 
-      const confirmButton = document.querySelector('yt-confirm-dialog-renderer [aria-label^="Unsubscribe"]');
-      if (confirmButton) {
-        confirmButton.click();
-        console.log(`Unsubscribed ${currentIndex + 1}/${channels.length}`);
-      }
+      setTimeout(() => {
+        const confirmButton = document.getElementById('confirm-button').querySelector("[aria-label^='Unsubscribe'");
+        if (confirmButton) {
+          confirmButton.click();
+        }
+      }, 300);
 
-      // Process the next channel after a delay
-      setTimeout(() => unsubscribeFromChannels(channels, currentIndex + 1), UNSUBSCRIBE_DELAY_TIME);
-    } else {
-      // If the unsubscribe button is not found, move to the next channel
-      unsubscribeFromChannels(channels, currentIndex + 1);
+      i++;
+      console.log(`${i} unsubscribed`);
+      console.log(`${channelCount - i} remaining`);
     }
   } else {
-    console.log('Finished unsubscribing from channels.');
+    clearInterval(unsubscribeInterval);
+    console.log("Unsubscribe process completed");
   }
 }
-
-window.addEventListener('load', () => {
-  // Check if the current tab is the specified YouTube tab
-  const isYouTubeTab = window.location.href.startsWith('https://www.youtube.com/feed/channels');
-
-  if (isYouTubeTab) {
-    const channels = Array.from(document.querySelectorAll('ytd-channel-renderer'));
-    console.log(`${channels.length} channels found.`);
-
-    chrome.runtime.onMessage.addListener((message) => {
-      if (message.action === 'startUnsubscribe' && !isUnsubscribing && channels.length > 0) {
-        isUnsubscribing = true;
-        unsubscribeFromChannels(channels);
-      } else if (message.action === 'stopUnsubscribe') {
-        isUnsubscribing = false;
-      }
-    });
-  } else {
-    console.log("This script is not running on the specified YouTube tab.");
-  }
-});
