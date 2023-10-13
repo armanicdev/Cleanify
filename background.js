@@ -1,1 +1,51 @@
-var _0x219f86=_0x3b08;(function(_0x50e48c,_0xa69b2c){var _0x255634=_0x3b08,_0x1c41c4=_0x50e48c();while(!![]){try{var _0x2fd418=parseInt(_0x255634(0x80))/0x1+-parseInt(_0x255634(0x78))/0x2+-parseInt(_0x255634(0x7a))/0x3+parseInt(_0x255634(0x81))/0x4*(parseInt(_0x255634(0x77))/0x5)+parseInt(_0x255634(0x74))/0x6+-parseInt(_0x255634(0x82))/0x7+-parseInt(_0x255634(0x7d))/0x8;if(_0x2fd418===_0xa69b2c)break;else _0x1c41c4['push'](_0x1c41c4['shift']());}catch(_0x4d2d2c){_0x1c41c4['push'](_0x1c41c4['shift']());}}}(_0x11a9,0x1d5ba),chrome[_0x219f86(0x76)][_0x219f86(0x86)][_0x219f86(0x7c)]((_0x4364ad,_0x54c648)=>{var _0xc14164=_0x219f86;isValidAction(_0x4364ad[_0xc14164(0x85)])&&sendToContentScript(_0x54c648[_0xc14164(0x7b)]['id'],_0x4364ad);}));function _0x11a9(){var _0x465c45=['onMessage','executeScript','stopDislike','745410cRlgSY','startNewAction','runtime','20sfDMsv','53380GPELMV','scripting','345690gNgJlz','tab','addListener','950008ZOwJRp','sendMessage','stopUnsubscribe','185850TBWiIc','158544KLTMVU','613956ZlDyFK','stopNewAction','startDislike','action'];_0x11a9=function(){return _0x465c45;};return _0x11a9();}function isValidAction(_0x195ec7){var _0x3f4326=_0x219f86;return _0x195ec7==='startUnsubscribe'||_0x195ec7===_0x3f4326(0x7f)||_0x195ec7===_0x3f4326(0x84)||_0x195ec7===_0x3f4326(0x73)||_0x195ec7===_0x3f4326(0x75)||_0x195ec7===_0x3f4326(0x83);}function sendToContentScript(_0x36a316,_0x6fe6c0){var _0x27cd68=_0x219f86;chrome['scripting'][_0x27cd68(0x72)]({'target':{'tabId':_0x36a316},'function':_0x9f3c0c=>{var _0x99cde2=_0x27cd68;chrome[_0x99cde2(0x76)][_0x99cde2(0x7e)](_0x9f3c0c);},'args':[_0x6fe6c0]});}function _0x3b08(_0x2545d2,_0x6bef01){var _0x11a932=_0x11a9();return _0x3b08=function(_0x3b0845,_0x3fd82b){_0x3b0845=_0x3b0845-0x72;var _0x3ddbfd=_0x11a932[_0x3b0845];return _0x3ddbfd;},_0x3b08(_0x2545d2,_0x6bef01);}chrome['runtime'][_0x219f86(0x86)][_0x219f86(0x7c)]((_0x5c77d6,_0x46f63f)=>{var _0x4c7e26=_0x219f86;isValidAction(_0x5c77d6[_0x4c7e26(0x85)])&&sendToContentScript(_0x46f63f[_0x4c7e26(0x7b)]['id'],_0x5c77d6);});function isValidAction(_0x386701){var _0x4739e7=_0x219f86;return _0x386701==='startUnsubscribe'||_0x386701===_0x4739e7(0x7f)||_0x386701===_0x4739e7(0x84)||_0x386701===_0x4739e7(0x73)||_0x386701==='startNewAction'||_0x386701===_0x4739e7(0x83);}function sendToContentScript(_0x26f3ed,_0x5c9a73){var _0x49a819=_0x219f86;chrome[_0x49a819(0x79)][_0x49a819(0x72)]({'target':{'tabId':_0x26f3ed},'function':_0x157457=>{var _0xaa2b0e=_0x49a819;chrome[_0xaa2b0e(0x76)][_0xaa2b0e(0x7e)](_0x157457);},'args':[_0x5c9a73]});}
+chrome.runtime.onMessage.addListener((message, sender) => {
+  if (isValidAction(message.action)) {
+    sendToContentScript(sender.tab.id, message);
+  }
+});
+
+function isValidAction(action) {
+  return (
+    action === 'startUnsubscribe' ||
+    action === 'stopUnsubscribe' ||
+    action === 'startDislike' ||
+    action === 'stopDislike' ||
+    action === 'startNewAction' ||
+    action === 'stopNewAction'
+  );
+}
+
+function sendToContentScript(tabId, message) {
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    function: (message) => {
+      chrome.runtime.sendMessage(message);
+    },
+    args: [message],
+  });
+} chrome.runtime.onMessage.addListener((message, sender) => {
+  if (isValidAction(message.action)) {
+    sendToContentScript(sender.tab.id, message);
+  }
+});
+
+function isValidAction(action) {
+  return (
+    action === 'startUnsubscribe' ||
+    action === 'stopUnsubscribe' ||
+    action === 'startDislike' ||
+    action === 'stopDislike' ||
+    action === 'startNewAction' ||
+    action === 'stopNewAction'
+  );
+}
+
+function sendToContentScript(tabId, message) {
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    function: (message) => {
+      chrome.runtime.sendMessage(message);
+    },
+    args: [message],
+  });
+}
