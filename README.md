@@ -1,6 +1,6 @@
-# Cleanify - Browser Extension for Cleaning Subscriptions, Likes, and Watch Later
+# Cleanify - Subscriptions, Likes, and Watch Later Cleaner
 
-![Cleanify Logo](https://i.imgur.com/1tmtK3Z.png) <!-- Add a logo if you have one -->
+![Cleanify Logo](https://i.imgur.com/1tmtK3Z.png)
 
 ## Overview
 
