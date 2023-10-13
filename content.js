@@ -3,25 +3,22 @@ let unsubscribeInterval;
 
 chrome.runtime.onMessage.addListener((message) => {
   if (message.action === 'startUnsubscribe') {
-    console.log("Started unsubscribing");
     stopUnsubscribe = false;
     startUnsubscribe();
   } else if (message.action === 'stopUnsubscribe') {
-    console.log("Stopped unsubscribing");
     stopUnsubscribe = true;
     clearInterval(unsubscribeInterval);
   }
 });
 
 function startUnsubscribe() {
-  i = 0; // Reset the counter
+  i = 0;
   unsubscribeInterval = setInterval(unsubscribeChannel, 500);
 }
 
 function unsubscribeChannel() {
   if (stopUnsubscribe) {
     clearInterval(unsubscribeInterval);
-    console.log("Unsubscribe process stopped");
     return;
   }
 
@@ -38,17 +35,13 @@ function unsubscribeChannel() {
         const confirmButton = document.getElementById('confirm-button').querySelector("[aria-label^='Unsubscribe'");
         if (confirmButton) {
           confirmButton.click();
-          // Remove the unsubscribed channel from the DOM
           const channelToRemove = channelRenderers[i];
           channelToRemove.parentNode.removeChild(channelToRemove);
         }
       }, 300);
 
-      console.log(`${i} unsubscribed`);
-      console.log(`${channelCount - i - 1} remaining`);
     }
   } else {
     clearInterval(unsubscribeInterval);
-    console.log("Unsubscribe process completed");
   }
 }

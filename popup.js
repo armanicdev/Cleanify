@@ -31,10 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButton4 = document.getElementById('startButton4');
   const stopButton4 = document.getElementById('stopButton4');
 
-  const setMessageText = (text) => {
-    messageElement.textContent = text;
-  };
-
   const toggleButtons = (startEnabled, stopEnabled) => {
     startButton.classList.toggle('disabled', !startEnabled);
     stopButton.classList.toggle('disabled', !stopEnabled);

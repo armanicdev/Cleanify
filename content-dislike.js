@@ -1,53 +1,56 @@
-let stopDislikeFlag = false; // Flag to indicate whether to stop disliking
+let stopDislikeFlag = false;
+let dislikeIndex = 0;
+let items;
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'startDislike') {
-        console.log("Started disliking");
-        stopDislikeFlag = false;
-        deleteLikedVideos(); // Call your disliking function
+        initializeDislike();
+        startDislike();
     } else if (message.action === 'stopDislike') {
-        console.log("Stopped disliking");
-        stopDislikeFlag = true;
-        // Add any logic needed when stopping the disliking process
+        stopDislike();
     }
 });
 
-async function deleteLikedVideos() {
-    'use strict';
-
-    console.log('Deleting liked videos');
-
-    // Helper function for sleep
-    function sleep(ms) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
-    const items = document.querySelectorAll(
+function initializeDislike() {
+    stopDislikeFlag = false;
+    dislikeIndex = 0;
+    items = document.querySelectorAll(
         `#primary ytd-playlist-video-renderer yt-icon-button.dropdown-trigger > button[aria-label]`
     );
+}
 
-    for (let i = 0; i < items.length && !stopDislikeFlag; i++) {
-        console.log(`Clicking item ${i + 1}`);
-        items[i].click();
+async function startDislike() {
+    while (!stopDislikeFlag && dislikeIndex < items.length) {
+        await dislikeVideo();
+        dislikeIndex++;
+    }
+}
 
-        // Replace the following timeout with an await sleep
-        await sleep(500);
+function stopDislike() {
+    stopDislikeFlag = true;
+}
 
-        if (
-            document.querySelector(
-                `tp-yt-paper-listbox.style-scope.ytd-menu-popup-renderer`
-            ).lastElementChild
-        ) {
-            console.log('Disliking video');
-            document
-                .querySelector(
-                    `tp-yt-paper-listbox.style-scope.ytd-menu-popup-renderer`
-                )
-                .lastElementChild.click();
-        } else {
-            console.log('Unable to find dislike option');
-        }
+async function dislikeVideo() {
+    if (stopDislikeFlag || dislikeIndex >= items.length) {
+        return;
     }
 
-    console.log('Finished deleting liked videos');
+    const item = items[dislikeIndex];
+    item.click();
+
+    await sleep(500);
+
+    const dropdown = document.querySelector(
+        `tp-yt-paper-listbox.style-scope.ytd-menu-popup-renderer`
+    );
+
+    if (dropdown && dropdown.lastElementChild) {
+        dropdown.lastElementChild.click();
+    } else {
+        console.log('Unable to find dislike option');
+    }
+}
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }

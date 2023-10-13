@@ -4,33 +4,41 @@ chrome.runtime.onMessage.addListener((message) => {
     if (message.action === 'startNewAction') {
         console.log("Started removing");
         stopRemoving = false;
-        removeWatchs();
+        removeWatches();
     } else if (message.action === 'stopNewAction') {
         console.log("Stopped removing");
         stopRemoving = true;
     }
 });
 
-function removeWatchs() {
-    const video = document.querySelector('ytd-playlist-video-renderer');
+async function removeWatches() {
+    while (!stopRemoving) {
+        const video = document.querySelector('ytd-playlist-video-renderer');
 
-    if (video && !stopRemoving) {
+        if (!video) {
+            console.log("No more videos to remove");
+            break;
+        }
+
         const actionButton = video.querySelector('#primary button[aria-label="Action menu"]');
 
         if (actionButton) {
             actionButton.click();
+            await sleep(500); // Wait for the action menu to open
 
-            setTimeout(() => {
-                const removeButtons = Array.from(document.querySelectorAll('yt-formatted-string'))
-                    .filter((button) => button.textContent.includes('Remove from'));
+            const removeButtons = Array.from(document.querySelectorAll('yt-formatted-string'))
+                .filter((button) => button.textContent.includes('Remove from'));
 
-                removeButtons.forEach((button) => {
-                    button.click();
-                });
-
-                // Call the function recursively to continue removing items
-                removeWatchs();
-            }, 500);
+            for (const button of removeButtons) {
+                button.click();
+                await sleep(500); // Wait before processing the next removal
+            }
         }
     }
+
+    console.log("Removal process completed");
+}
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
