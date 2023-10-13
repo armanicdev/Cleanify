@@ -133,6 +133,11 @@ body:not(:hover) .dropdown-content {
     display: none;
 }
 
+a.support-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .page {
     display: none;
     text-align: center;
