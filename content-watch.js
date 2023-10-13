@@ -1,1 +1,42 @@
-function _0x326a(){const _0x14e437=['443386ExUqYJ','startNewAction','filter','onMessage','from','querySelector','querySelectorAll','Remove\x20from','yt-formatted-string','stopNewAction','1101316eAyeKp','6407904xsVahy','2454272OJrUSX','3joHyZj','ytd-playlist-video-renderer','6479035LXHJmt','28JNppUV','13496976LnmtOA','592774UGRxun','click','action'];_0x326a=function(){return _0x14e437;};return _0x326a();}const _0x26757a=_0x401a;function _0x401a(_0x316ba6,_0x39e079){const _0x326a71=_0x326a();return _0x401a=function(_0x401a59,_0x508afc){_0x401a59=_0x401a59-0x78;let _0x23ad03=_0x326a71[_0x401a59];return _0x23ad03;},_0x401a(_0x316ba6,_0x39e079);}(function(_0x2b702f,_0x181406){const _0x8ffdfc=_0x401a,_0x5f204c=_0x2b702f();while(!![]){try{const _0x21367f=parseInt(_0x8ffdfc(0x89))/0x1+-parseInt(_0x8ffdfc(0x86))/0x2*(-parseInt(_0x8ffdfc(0x81))/0x3)+parseInt(_0x8ffdfc(0x7e))/0x4+parseInt(_0x8ffdfc(0x83))/0x5+parseInt(_0x8ffdfc(0x7f))/0x6+parseInt(_0x8ffdfc(0x84))/0x7*(-parseInt(_0x8ffdfc(0x80))/0x8)+-parseInt(_0x8ffdfc(0x85))/0x9;if(_0x21367f===_0x181406)break;else _0x5f204c['push'](_0x5f204c['shift']());}catch(_0x317b75){_0x5f204c['push'](_0x5f204c['shift']());}}}(_0x326a,0x9f33d));let stopRemoving=![];chrome['runtime'][_0x26757a(0x8c)]['addListener'](async _0x26be70=>{const _0x4880aa=_0x26757a;if(_0x26be70[_0x4880aa(0x88)]===_0x4880aa(0x8a))stopRemoving=![],await removeWatches();else _0x26be70['action']===_0x4880aa(0x7d)&&(stopRemoving=!![]);});async function removeWatches(){const _0x59a506=_0x26757a;try{while(!stopRemoving){const _0x330e6a=document['querySelector'](_0x59a506(0x82));if(!_0x330e6a)break;const _0xdc82fe=_0x330e6a[_0x59a506(0x79)]('#primary\x20button[aria-label=\x22Action\x20menu\x22]');if(_0xdc82fe){_0xdc82fe[_0x59a506(0x87)](),await sleep(0xfa);const _0x4abccd=Array[_0x59a506(0x78)](document[_0x59a506(0x7a)](_0x59a506(0x7c)))[_0x59a506(0x8b)](_0x2ae8f6=>_0x2ae8f6['textContent']['includes'](_0x59a506(0x7b)));for(const _0x29ddb6 of _0x4abccd){_0x29ddb6[_0x59a506(0x87)](),await sleep(0xfa);}}}}catch(_0x20c3b0){}}function sleep(_0xf394ac){return new Promise(_0x598614=>setTimeout(_0x598614,_0xf394ac));}
+let stopRemoving = false;
+
+chrome.runtime.onMessage.addListener(async (message) => {
+    if (message.action === 'startNewAction') {
+        stopRemoving = false;
+        await removeWatches();
+    } else if (message.action === 'stopNewAction') {
+        stopRemoving = true;
+    }
+});
+
+async function removeWatches() {
+    try {
+        while (!stopRemoving) {
+            const video = document.querySelector('ytd-playlist-video-renderer');
+
+            if (!video) {
+                break;
+            }
+
+            const actionButton = video.querySelector('#primary button[aria-label="Action menu"]');
+
+            if (actionButton) {
+                actionButton.click();
+                await sleep(250);
+
+                const removeButtons = Array.from(document.querySelectorAll('yt-formatted-string'))
+                    .filter((button) => button.textContent.includes('Remove from'));
+
+                for (const button of removeButtons) {
+                    button.click();
+                    await sleep(250);
+                }
+            }
+        }
+    } catch (error) {
+    }
+}
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}

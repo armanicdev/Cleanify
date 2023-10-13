@@ -44,7 +44,7 @@
 
 @media (prefers-color-scheme: dark) {
     .separator {
-        border-bottom: 1px solid #313131;
+        border-bottom: 1px solid #414141;
     }
 }
 
@@ -326,7 +326,6 @@ a.support-link {
 }
 
 body {
-    background-color: transparent;
     font-family: "Product Sans Regular", sans-serif;
     margin: 0;
     padding: 0;

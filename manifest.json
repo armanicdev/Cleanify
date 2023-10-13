@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Unsubify",
+  "name": "Cleanifier",
   "version": "1.0",
-  "description": "Unsubscribe from YouTube channels automatically",
+  "description": "Effortlessly manage YouTube subscriptions, likes, watch later, and more.",
   "permissions": [
     "activeTab",
     "storage",

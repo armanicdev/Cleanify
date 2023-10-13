@@ -1,1 +1,210 @@
-function _0x4733(_0x3fa64a, _0x2aabf7) { const _0x451192 = _0x4511(); return _0x4733 = function (_0x4733f7, _0x3d94a7) { _0x4733f7 = _0x4733f7 - 0x1b5; let _0x30c58b = _0x451192[_0x4733f7]; return _0x30c58b; }, _0x4733(_0x3fa64a, _0x2aabf7); } const _0x3b63d0 = _0x4733; (function (_0x30a04c, _0x7be5) { const _0x3abe74 = _0x4733, _0x1762c3 = _0x30a04c(); while (!![]) { try { const _0x55b2c3 = parseInt(_0x3abe74(0x1ca)) / 0x1 * (parseInt(_0x3abe74(0x1b6)) / 0x2) + parseInt(_0x3abe74(0x1e9)) / 0x3 * (-parseInt(_0x3abe74(0x1d4)) / 0x4) + -parseInt(_0x3abe74(0x1ce)) / 0x5 * (-parseInt(_0x3abe74(0x1cf)) / 0x6) + -parseInt(_0x3abe74(0x1e3)) / 0x7 + -parseInt(_0x3abe74(0x1c4)) / 0x8 * (parseInt(_0x3abe74(0x1ee)) / 0x9) + -parseInt(_0x3abe74(0x1ef)) / 0xa + parseInt(_0x3abe74(0x1eb)) / 0xb * (parseInt(_0x3abe74(0x1dd)) / 0xc); if (_0x55b2c3 === _0x7be5) break; else _0x1762c3['push'](_0x1762c3['shift']()); } catch (_0x25fce4) { _0x1762c3['push'](_0x1762c3['shift']()); } } }(_0x4511, 0x88cd4)); function showPage(_0x2c11f1) { const _0x29b1e8 = _0x4733, _0xe39838 = document['querySelectorAll']('.page'), _0x2de8ab = document[_0x29b1e8(0x1e4)](_0x2c11f1); if (!_0x2de8ab) return; _0xe39838[_0x29b1e8(0x1b5)](_0x255068 => { const _0x18f6cc = _0x29b1e8; _0x255068[_0x18f6cc(0x1cb)][_0x18f6cc(0x1bc)] = '0', _0x255068['style'][_0x18f6cc(0x1ba)] = _0x18f6cc(0x1d9), _0x255068['style'][_0x18f6cc(0x1d5)] = _0x18f6cc(0x1e1); }), _0x2de8ab[_0x29b1e8(0x1cb)][_0x29b1e8(0x1d1)] = _0x29b1e8(0x1c7), _0x2de8ab[_0x29b1e8(0x1cb)][_0x29b1e8(0x1bc)] = '1', _0x2de8ab[_0x29b1e8(0x1cb)][_0x29b1e8(0x1ba)] = _0x29b1e8(0x1be), _0x2de8ab[_0x29b1e8(0x1cb)]['position'] = 'relative'; } document[_0x3b63d0(0x1ed)](_0x3b63d0(0x1e6), () => { const _0x1d64e0 = _0x3b63d0, _0x255d32 = document['getElementById']('startButton'), _0x23186c = document[_0x1d64e0(0x1e4)]('stopButton'), _0x30bac7 = document['getElementById']('message'), _0x217061 = document[_0x1d64e0(0x1e4)]('backButton'), _0x22bc93 = document[_0x1d64e0(0x1e7)](_0x1d64e0(0x1d3)), _0x52cd88 = document[_0x1d64e0(0x1e4)]('startButton2'), _0x1e3827 = document[_0x1d64e0(0x1e4)](_0x1d64e0(0x1e0)), _0xf53988 = document[_0x1d64e0(0x1e4)]('startButton3'), _0x40b4d4 = document['getElementById']('stopButton3'), _0x324c3f = document[_0x1d64e0(0x1e4)](_0x1d64e0(0x1ec)), _0x3876a8 = document[_0x1d64e0(0x1e4)]('stopButton4'), _0x1fd134 = (_0x24df6d, _0x36f6c2) => { const _0xd95f9d = _0x1d64e0; _0x255d32['classList']['toggle']('disabled', !_0x24df6d), _0x23186c[_0xd95f9d(0x1b7)][_0xd95f9d(0x1e2)](_0xd95f9d(0x1d2), !_0x36f6c2); }, _0x538a69 = (_0x9310c3, _0x6837bd) => { const _0x1ba35c = _0x1d64e0; _0x52cd88[_0x1ba35c(0x1b7)][_0x1ba35c(0x1e2)](_0x1ba35c(0x1d2), !_0x9310c3), _0x1e3827[_0x1ba35c(0x1b7)][_0x1ba35c(0x1e2)](_0x1ba35c(0x1d2), !_0x6837bd); }, _0x1f1dd6 = (_0x182220, _0x321d49) => { const _0x160e26 = _0x1d64e0; _0xf53988['classList'][_0x160e26(0x1e2)]('disabled', !_0x182220), _0x40b4d4[_0x160e26(0x1b7)][_0x160e26(0x1e2)](_0x160e26(0x1d2), !_0x321d49); }, _0x4f8bf0 = (_0xaf7469, _0x4e91de) => { const _0x38df7d = _0x1d64e0; _0x324c3f['classList'][_0x38df7d(0x1e2)]('disabled', !_0xaf7469), _0x3876a8[_0x38df7d(0x1b7)][_0x38df7d(0x1e2)]('disabled', !_0x4e91de); }; _0x4f8bf0(![], ![]); function _0x513e0b(_0x4c2243) { const _0x208446 = _0x1d64e0; return _0x4c2243[_0x208446(0x1c3)](_0x208446(0x1e5)); } function _0x46214b(_0x14bac8) { const _0x1e7f4d = _0x1d64e0; return _0x14bac8[_0x1e7f4d(0x1c3)]('https://www.youtube.com/playlist?list=LL'); } function _0x51c49c(_0x1a1f7b) { const _0x55006a = _0x1d64e0; return _0x1a1f7b[_0x55006a(0x1c3)](_0x55006a(0x1dc)); } const _0x58f588 = _0x509392 => { const _0x5af1ac = _0x1d64e0, _0x1bfff3 = _0x5af1ac(0x1d7) + (_0x509392 + 0x1); showPage(_0x1bfff3), chrome[_0x5af1ac(0x1bf)][_0x5af1ac(0x1d8)][_0x5af1ac(0x1de)]({ 'activePage': _0x1bfff3 }); }; _0x22bc93['forEach']((_0x2f806d, _0x4aed46) => { const _0x2fed06 = _0x1d64e0; _0x2f806d[_0x2fed06(0x1ed)](_0x2fed06(0x1bd), () => _0x58f588(_0x4aed46)); }); const _0x4b0efd = () => { const _0x10be5e = _0x1d64e0; showPage(_0x10be5e(0x1c8)), chrome['storage'][_0x10be5e(0x1d8)][_0x10be5e(0x1de)]({ 'activePage': _0x10be5e(0x1c8) }); }; _0x217061['addEventListener'](_0x1d64e0(0x1bd), _0x4b0efd), backButton2['addEventListener']('click', _0x4b0efd), backButton3[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), _0x4b0efd), backButton4[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), _0x4b0efd), window['addEventListener'](_0x1d64e0(0x1b8), resetExtension), resetExtension(), chrome[_0x1d64e0(0x1cd)]['onActivated'][_0x1d64e0(0x1d6)](({ tabId: _0x140d33 }) => { checkYouTubeTab(_0x140d33); }), _0x255d32[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), () => { const _0x271473 = _0x1d64e0; chrome['tabs'][_0x271473(0x1da)]({ 'active': !![], 'currentWindow': !![] }, ([_0x5f80f]) => { const _0x4d9754 = _0x271473; _0x513e0b(_0x5f80f?.[_0x4d9754(0x1df)]) && (chrome[_0x4d9754(0x1cd)][_0x4d9754(0x1db)](_0x5f80f['id'], { 'action': _0x4d9754(0x1c6) }), _0x1fd134(![], !![]), chrome[_0x4d9754(0x1bf)][_0x4d9754(0x1d8)][_0x4d9754(0x1de)]({ 'startButtonEnabled': ![], 'stopButtonEnabled': !![] })); }); }), _0x23186c[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), () => { const _0x2891ed = _0x1d64e0; chrome[_0x2891ed(0x1cd)]['query']({ 'active': !![], 'currentWindow': !![] }, ([_0x46b517]) => { const _0x52a475 = _0x2891ed; !_0x23186c[_0x52a475(0x1b7)][_0x52a475(0x1c0)]('disabled') && (chrome[_0x52a475(0x1cd)][_0x52a475(0x1db)](_0x46b517['id'], { 'action': 'stopUnsubscribe' }), _0x1fd134(!![], ![]), chrome[_0x52a475(0x1bf)][_0x52a475(0x1d8)][_0x52a475(0x1de)]({ 'startButtonEnabled': !![], 'stopButtonEnabled': ![] })); }); }), _0x52cd88[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), () => { const _0x20043a = _0x1d64e0; chrome[_0x20043a(0x1cd)][_0x20043a(0x1da)]({ 'active': !![], 'currentWindow': !![] }, async ([_0x35dba1]) => { const _0x111579 = _0x20043a; _0x46214b(_0x35dba1?.['url']) && (chrome[_0x111579(0x1cd)]['sendMessage'](_0x35dba1['id'], { 'action': _0x111579(0x1cc), 'tabId': _0x35dba1['id'] }), _0x538a69(![], !![]), chrome['storage']['local']['set']({ 'startButton2Enabled': ![], 'stopButton2Enabled': !![] })); }); }), _0x1e3827[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), () => { const _0x2d76aa = _0x1d64e0; chrome[_0x2d76aa(0x1cd)][_0x2d76aa(0x1da)]({ 'active': !![], 'currentWindow': !![] }, ([_0x37e050]) => { const _0x55a8f4 = _0x2d76aa; !_0x1e3827['classList'][_0x55a8f4(0x1c0)](_0x55a8f4(0x1d2)) && (chrome['tabs'][_0x55a8f4(0x1db)](_0x37e050['id'], { 'action': 'stopDislike', 'tabId': _0x37e050['id'] }), _0x538a69(!![], ![]), chrome[_0x55a8f4(0x1bf)][_0x55a8f4(0x1d8)][_0x55a8f4(0x1de)]({ 'startButton2Enabled': !![], 'stopButton2Enabled': ![] })); }); }), _0xf53988[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), () => { const _0x4202b4 = _0x1d64e0; chrome[_0x4202b4(0x1cd)][_0x4202b4(0x1da)]({ 'active': !![], 'currentWindow': !![] }, ([_0x4c2fc8]) => { const _0x200312 = _0x4202b4; _0x51c49c(_0x4c2fc8?.[_0x200312(0x1df)]) && (chrome['tabs'][_0x200312(0x1db)](_0x4c2fc8['id'], { 'action': 'startNewAction', 'tabId': _0x4c2fc8['id'] }), _0x1f1dd6(![], !![]), chrome[_0x200312(0x1bf)][_0x200312(0x1d8)][_0x200312(0x1de)]({ 'startButton3Enabled': ![], 'stopButton3Enabled': !![] })); }); }), _0x40b4d4[_0x1d64e0(0x1ed)](_0x1d64e0(0x1bd), () => { chrome['tabs']['query']({ 'active': !![], 'currentWindow': !![] }, ([_0x169a24]) => { const _0x41c7af = _0x4733; !_0x40b4d4[_0x41c7af(0x1b7)]['contains'](_0x41c7af(0x1d2)) && (chrome[_0x41c7af(0x1cd)][_0x41c7af(0x1db)](_0x169a24['id'], { 'action': _0x41c7af(0x1c1), 'tabId': _0x169a24['id'] }), _0x1f1dd6(!![], ![]), chrome[_0x41c7af(0x1bf)][_0x41c7af(0x1d8)][_0x41c7af(0x1de)]({ 'startButton3Enabled': !![], 'stopButton3Enabled': ![] })); }); }), chrome['storage'][_0x1d64e0(0x1d8)][_0x1d64e0(0x1d0)]([_0x1d64e0(0x1e8), _0x1d64e0(0x1c5)], ({ startButtonEnabled: _0x1c6d49, stopButtonEnabled: _0x85fd5b }) => { const _0x4a1b19 = _0x1d64e0; chrome[_0x4a1b19(0x1cd)][_0x4a1b19(0x1da)]({ 'active': !![], 'currentWindow': !![] }, ([_0x529070]) => { const _0xa74d2e = _0x4a1b19, _0x45e497 = _0x529070?.['url'] || '', _0x17a264 = _0x513e0b(_0x45e497); _0x17a264 && _0x45e497[_0xa74d2e(0x1c3)](_0xa74d2e(0x1e5)) ? _0x1fd134(_0x1c6d49 !== ![], _0x85fd5b === !![]) : _0x1fd134(![], ![]); }); }), chrome[_0x1d64e0(0x1bf)]['local'][_0x1d64e0(0x1d0)](['startButton2Enabled', _0x1d64e0(0x1c2)], ({ startButton2Enabled: _0x31315b, stopButton2Enabled: _0x123e45 }) => { const _0x1ee5cf = _0x1d64e0; chrome['tabs'][_0x1ee5cf(0x1da)]({ 'active': !![], 'currentWindow': !![] }, ([_0x1eb9e2]) => { const _0x1580ad = _0x1ee5cf, _0x4b4954 = _0x1eb9e2?.[_0x1580ad(0x1df)] || '', _0x53ad80 = _0x46214b(_0x4b4954); _0x53ad80 && _0x4b4954[_0x1580ad(0x1c3)](_0x1580ad(0x1c9)) ? _0x538a69(_0x31315b === !![], _0x123e45 === !![]) : _0x538a69(![], ![]); }); }), chrome['storage'][_0x1d64e0(0x1d8)][_0x1d64e0(0x1d0)]([_0x1d64e0(0x1ea), _0x1d64e0(0x1bb)], ({ startButton3Enabled: _0x196fb5, stopButton3Enabled: _0x4b3c2f }) => { const _0x19c3ec = _0x1d64e0; chrome[_0x19c3ec(0x1cd)][_0x19c3ec(0x1da)]({ 'active': !![], 'currentWindow': !![] }, ([_0x50e6b0]) => { const _0x16672f = _0x19c3ec, _0x2573f3 = _0x50e6b0?.[_0x16672f(0x1df)] || '', _0x1edda0 = _0x51c49c(_0x2573f3); _0x1edda0 && _0x2573f3[_0x16672f(0x1c3)](_0x16672f(0x1dc)) ? _0x1f1dd6(_0x196fb5 !== ![], _0x4b3c2f === !![]) : _0x1f1dd6(![], ![]); }); }); }); function resetExtension() { const _0x5c4323 = _0x3b63d0; chrome[_0x5c4323(0x1bf)]['local'][_0x5c4323(0x1d0)]([_0x5c4323(0x1b9), _0x5c4323(0x1e8), _0x5c4323(0x1c5)], ({ activePage: _0x4baa34, startButtonEnabled: _0x4786f1, stopButtonEnabled: _0x2f784b }) => { const _0x505b92 = _0x5c4323, _0x3a4904 = _0x4baa34 || _0x505b92(0x1c8); showPage(_0x3a4904); }); } function _0x4511() { const _0x41ae26 = ['6416364nHMvjP', 'set', 'url', 'stopButton2', 'absolute', 'toggle', '4294094lyWNzU', 'getElementById', 'https://www.youtube.com/feed/channels', 'DOMContentLoaded', 'querySelectorAll', 'startButtonEnabled', '34674HfMqSt', 'startButton3Enabled', '22INhSSf', 'startButton4', 'addEventListener', '9BGxadP', '2214370EsfFPa', 'forEach', '1326RpxjXk', 'classList', 'beforeunload', 'activePage', 'pointerEvents', 'stopButton3Enabled', 'opacity', 'click', 'auto', 'storage', 'contains', 'stopNewAction', 'stopButton2Enabled', 'startsWith', '2997520aiArJF', 'stopButtonEnabled', 'startUnsubscribe', 'block', 'defaultPage', 'https://www.youtube.com/playlist?list=LL', '1363NkRfXA', 'style', 'startDislike', 'tabs', '115PgcxVK', '55548AfoSVe', 'get', 'display', 'disabled', '.grid-item', '144MCkaWZ', 'position', 'addListener', 'page', 'local', 'none', 'query', 'sendMessage', 'https://www.youtube.com/playlist?list=WL']; _0x4511 = function () { return _0x41ae26; }; return _0x4511(); } function checkYouTubeTab(_0x1160ef) { const _0x15d51f = _0x3b63d0; chrome[_0x15d51f(0x1cd)]['get'](_0x1160ef, _0x3dc90e => { const _0x245f25 = _0x15d51f; if (_0x3dc90e) { const _0x43cfa1 = _0x3dc90e[_0x245f25(0x1df)] || ''; if (isYouTubeFeedTab(_0x43cfa1)) { } } }); }
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+  const pageToShow = document.getElementById(pageId);
+
+  if (!pageToShow) {
+    return;
+  }
+
+  pages.forEach((page) => {
+    page.style.opacity = '0';
+    page.style.pointerEvents = 'none';
+    page.style.position = 'absolute';
+  });
+
+  pageToShow.style.display = 'block';
+  pageToShow.style.opacity = '1';
+  pageToShow.style.pointerEvents = 'auto';
+  pageToShow.style.position = 'relative';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const startButton = document.getElementById('startButton');
+  const stopButton = document.getElementById('stopButton');
+  const messageElement = document.getElementById('message');
+  const backButton = document.getElementById('backButton');
+  const gridItems = document.querySelectorAll('.grid-item');
+  const startButton2 = document.getElementById('startButton2');
+  const stopButton2 = document.getElementById('stopButton2');
+  const startButton3 = document.getElementById('startButton3');
+  const stopButton3 = document.getElementById('stopButton3');
+  const startButton4 = document.getElementById('startButton4');
+  const stopButton4 = document.getElementById('stopButton4');
+
+  const toggleButtons = (startEnabled, stopEnabled) => {
+    startButton.classList.toggle('disabled', !startEnabled);
+    stopButton.classList.toggle('disabled', !stopEnabled);
+  };
+
+  const toggleButtons2 = (startEnabled, stopEnabled) => {
+    startButton2.classList.toggle('disabled', !startEnabled);
+    stopButton2.classList.toggle('disabled', !stopEnabled);
+  };
+
+  const toggleButtons3 = (startEnabled, stopEnabled) => {
+    startButton3.classList.toggle('disabled', !startEnabled);
+    stopButton3.classList.toggle('disabled', !stopEnabled);
+  };
+
+  const toggleButtons4 = (startEnabled, stopEnabled) => {
+    startButton4.classList.toggle('disabled', !startEnabled);
+    stopButton4.classList.toggle('disabled', !stopEnabled);
+  };
+
+  toggleButtons4(false, false);
+
+  function isYouTubeFeedTab(url) {
+    return url.startsWith('https://www.youtube.com/feed/channels');
+  }
+
+  function isYouTubeLikeTab(url) {
+    return url.startsWith('https://www.youtube.com/playlist?list=LL');
+  }
+
+  function isYouTubeWatchTab(url) {
+    return url.startsWith('https://www.youtube.com/playlist?list=WL');
+  }
+
+  const handleGridItemClick = (index) => {
+    const pageId = `page${index + 1}`;
+    showPage(pageId);
+    chrome.storage.local.set({ activePage: pageId });
+  };
+
+  gridItems.forEach((item, index) => {
+    item.addEventListener('click', () => handleGridItemClick(index));
+  });
+
+  const handleBackButtonClick = () => {
+    showPage('defaultPage');
+    chrome.storage.local.set({ activePage: 'defaultPage' });
+  };
+
+  backButton.addEventListener('click', handleBackButtonClick);
+  backButton2.addEventListener('click', handleBackButtonClick);
+  backButton3.addEventListener('click', handleBackButtonClick);
+  backButton4.addEventListener('click', handleBackButtonClick);
+
+  window.addEventListener('beforeunload', resetExtension);
+  resetExtension();
+
+  chrome.tabs.onActivated.addListener(({ tabId }) => {
+    checkYouTubeTab(tabId);
+  });
+
+  startButton.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (isYouTubeFeedTab(activeTab?.url)) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
+        toggleButtons(false, true);
+        chrome.storage.local.set({ startButtonEnabled: false, stopButtonEnabled: true });
+      }
+    });
+  });
+
+  stopButton.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (!stopButton.classList.contains('disabled')) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
+        toggleButtons(true, false);
+        chrome.storage.local.set({ startButtonEnabled: true, stopButtonEnabled: false });
+      }
+    });
+  });
+
+  startButton2.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, async ([activeTab]) => {
+      if (isYouTubeLikeTab(activeTab?.url)) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'startDislike', tabId: activeTab.id });
+        toggleButtons2(false, true);
+        chrome.storage.local.set({ startButton2Enabled: false, stopButton2Enabled: true });
+      }
+    });
+  });
+
+  stopButton2.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (!stopButton2.classList.contains('disabled')) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'stopDislike', tabId: activeTab.id });
+        toggleButtons2(true, false);
+        chrome.storage.local.set({ startButton2Enabled: true, stopButton2Enabled: false });
+      }
+    });
+  });
+
+  startButton3.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (isYouTubeWatchTab(activeTab?.url)) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'startNewAction', tabId: activeTab.id });
+        toggleButtons3(false, true);
+        chrome.storage.local.set({ startButton3Enabled: false, stopButton3Enabled: true });
+      }
+    });
+  });
+
+  stopButton3.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (!stopButton3.classList.contains('disabled')) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'stopNewAction', tabId: activeTab.id });
+        toggleButtons3(true, false);
+        chrome.storage.local.set({ startButton3Enabled: true, stopButton3Enabled: false });
+      }
+    });
+  });
+
+  chrome.storage.local.get(['startButtonEnabled', 'stopButtonEnabled'], ({ startButtonEnabled, stopButtonEnabled }) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      const url = activeTab?.url || '';
+      const isYouTubeTab = isYouTubeFeedTab(url);
+
+      if (isYouTubeTab && url.startsWith('https://www.youtube.com/feed/channels')) {
+        toggleButtons(startButtonEnabled !== false, stopButtonEnabled === true);
+      } else {
+        toggleButtons(false, false);
+      }
+    });
+  });
+
+  chrome.storage.local.get(['startButton2Enabled', 'stopButton2Enabled'], ({ startButton2Enabled, stopButton2Enabled }) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      const url = activeTab?.url || '';
+      const isLikeTab = isYouTubeLikeTab(url);
+
+      if (isLikeTab && url.startsWith('https://www.youtube.com/playlist?list=LL')) {
+        toggleButtons2(startButton2Enabled === true, stopButton2Enabled === true);
+      } else {
+        toggleButtons2(false, false);
+      }
+    });
+  });
+
+  chrome.storage.local.get(['startButton3Enabled', 'stopButton3Enabled'], ({ startButton3Enabled, stopButton3Enabled }) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      const url = activeTab?.url || '';
+      const isWatchTab = isYouTubeWatchTab(url);
+
+      if (isWatchTab && url.startsWith('https://www.youtube.com/playlist?list=WL')) {
+        toggleButtons3(startButton3Enabled !== false, stopButton3Enabled === true);
+      } else {
+        toggleButtons3(false, false);
+      }
+    });
+  });
+});
+
+function resetExtension() {
+  chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage, startButtonEnabled, stopButtonEnabled }) => {
+    const pageToShow = activePage || 'defaultPage';
+    showPage(pageToShow);
+  });
+}
+
+function checkYouTubeTab(tabId) {
+  chrome.tabs.get(tabId, (tab) => {
+    if (tab) {
+      const url = tab.url || '';
+      if (isYouTubeFeedTab(url)) {
+      }
+    }
+  });
+}
