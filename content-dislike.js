@@ -47,7 +47,6 @@ async function dislikeVideo() {
     if (dropdown && dropdown.lastElementChild) {
         dropdown.lastElementChild.click();
     } else {
-        console.log('Unable to find dislike option');
     }
 }
 

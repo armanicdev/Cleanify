@@ -39,7 +39,6 @@ function unsubscribeChannel() {
           channelToRemove.parentNode.removeChild(channelToRemove);
         }
       }, 300);
-
     }
   } else {
     clearInterval(unsubscribeInterval);

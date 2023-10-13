@@ -1,6 +1,4 @@
 chrome.runtime.onMessage.addListener((message, sender) => {
-  console.log('Message received:', message);
-
   if (isValidAction(message.action)) {
     sendToContentScript(sender.tab.id, message);
   }

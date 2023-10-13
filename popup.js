@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return url.startsWith('https://www.youtube.com/playlist?list=WL');
   }
 
-
   const handleGridItemClick = (index) => {
     const pageId = `page${index + 1}`;
     showPage(pageId);
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
         toggleButtons(false, true);
         chrome.storage.local.set({ startButtonEnabled: false, stopButtonEnabled: true });
-      } else {
       }
     });
   });
@@ -120,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.tabs.sendMessage(activeTab.id, { action: 'startDislike', tabId: activeTab.id });
         toggleButtons2(false, true);
         chrome.storage.local.set({ startButton2Enabled: false, stopButton2Enabled: true });
-      } else {
       }
     });
   });
@@ -138,11 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
   startButton3.addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (isYouTubeWatchTab(activeTab?.url)) {
-        // Your logic for the new action on page3
         chrome.tabs.sendMessage(activeTab.id, { action: 'startNewAction', tabId: activeTab.id });
         toggleButtons3(false, true);
         chrome.storage.local.set({ startButton3Enabled: false, stopButton3Enabled: true });
-      } else {
       }
     });
   });
@@ -150,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
   stopButton3.addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (!stopButton3.classList.contains('disabled')) {
-        // Your logic to stop the new action on page3
         chrome.tabs.sendMessage(activeTab.id, { action: 'stopNewAction', tabId: activeTab.id });
         toggleButtons3(true, false);
         chrome.storage.local.set({ startButton3Enabled: true, stopButton3Enabled: false });
@@ -177,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isLikeTab = isYouTubeLikeTab(url);
 
       if (isLikeTab && url.startsWith('https://www.youtube.com/playlist?list=LL')) {
-        toggleButtons2(startButton2Enabled === true, stopButton2Enabled === true);  // Enable startButton2 when on the specified link
+        toggleButtons2(startButton2Enabled === true, stopButton2Enabled === true);
       } else {
         toggleButtons2(false, false);
       }
@@ -197,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
 
 function resetExtension() {
   chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage, startButtonEnabled, stopButtonEnabled }) => {
