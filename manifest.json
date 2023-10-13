@@ -27,7 +27,8 @@
       ],
       "js": [
         "content.js",
-        "content-dislike.js"
+        "content-dislike.js",
+        "content-watch.js"
       ],
       "run_at": "document_end"
     }

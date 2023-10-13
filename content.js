@@ -1,14 +1,14 @@
 const UNSUBSCRIBE_DELAY_TIME = 500;
 let isUnsubscribing = false;
 
-async function unsubscribeFromChannels(channels) {
-  for (let i = 0; i < channels.length; i++) {
-    if (!isUnsubscribing) {
-      console.log("Unsubscribe process stopped.");
-      break;
-    }
+async function unsubscribeFromChannels(channels, currentIndex = 0) {
+  if (!isUnsubscribing) {
+    console.log("Unsubscribe process stopped.");
+    return;
+  }
 
-    const channel = channels[i];
+  if (currentIndex < channels.length) {
+    const channel = channels[currentIndex];
     const unsubscribeButton = channel.querySelector('[aria-label^="Unsubscribe from"]');
 
     if (unsubscribeButton) {
@@ -18,13 +18,21 @@ async function unsubscribeFromChannels(channels) {
       const confirmButton = document.querySelector('yt-confirm-dialog-renderer [aria-label^="Unsubscribe"]');
       if (confirmButton) {
         confirmButton.click();
-        console.log(`Unsubscribed ${i + 1}/${channels.length}`);
+        console.log(`Unsubscribed ${currentIndex + 1}/${channels.length}`);
       }
+
+      // Process the next channel after a delay
+      setTimeout(() => unsubscribeFromChannels(channels, currentIndex + 1), UNSUBSCRIBE_DELAY_TIME);
+    } else {
+      // If the unsubscribe button is not found, move to the next channel
+      unsubscribeFromChannels(channels, currentIndex + 1);
     }
+  } else {
+    console.log('Finished unsubscribing from channels.');
   }
 }
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
   // Check if the current tab is the specified YouTube tab
   const isYouTubeTab = window.location.href.startsWith('https://www.youtube.com/feed/channels');
 
@@ -32,8 +40,8 @@ window.addEventListener('load', async () => {
     const channels = Array.from(document.querySelectorAll('ytd-channel-renderer'));
     console.log(`${channels.length} channels found.`);
 
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-      if (message.action === 'startUnsubscribe' && !isUnsubscribing) {
+    chrome.runtime.onMessage.addListener((message) => {
+      if (message.action === 'startUnsubscribe' && !isUnsubscribing && channels.length > 0) {
         isUnsubscribing = true;
         unsubscribeFromChannels(channels);
       } else if (message.action === 'stopUnsubscribe') {

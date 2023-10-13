@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const gridItems = document.querySelectorAll('.grid-item');
   const startButton2 = document.getElementById('startButton2');
   const stopButton2 = document.getElementById('stopButton2');
+  const startButton3 = document.getElementById('startButton3');
+  const stopButton3 = document.getElementById('stopButton3');
 
   const setMessageText = (text) => {
     messageElement.textContent = text;
@@ -41,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
     stopButton2.classList.toggle('disabled', !stopEnabled);
   };
 
+  const toggleButtons3 = (startEnabled, stopEnabled) => {
+    startButton3.classList.toggle('disabled', !startEnabled);
+    stopButton3.classList.toggle('disabled', !stopEnabled);
+  };
+
   function isYouTubeFeedTab(url) {
     return url.startsWith('https://www.youtube.com/feed/channels');
   }
@@ -48,6 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function isYouTubeLikeTab(url) {
     return url.startsWith('https://www.youtube.com/playlist?list=LL');
   }
+
+  function isYouTubeWatchTab(url) {
+    return url.startsWith('https://www.youtube.com/playlist?list=WL');
+  }
+
 
   const handleGridItemClick = (index) => {
     const pageId = `page${index + 1}`;
@@ -120,6 +132,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  startButton3.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (isYouTubeWatchTab(activeTab?.url)) {
+        // Your logic for the new action on page3
+        chrome.tabs.sendMessage(activeTab.id, { action: 'startNewAction', tabId: activeTab.id });
+        toggleButtons3(false, true);
+        chrome.storage.local.set({ startButton3Enabled: false, stopButton3Enabled: true });
+      } else {
+        setMessageText('Please go to the specified YouTube playlist to continue');
+      }
+    });
+  });
+
+  stopButton3.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (!stopButton3.classList.contains('disabled')) {
+        // Your logic to stop the new action on page3
+        chrome.tabs.sendMessage(activeTab.id, { action: 'stopNewAction', tabId: activeTab.id });
+        toggleButtons3(true, false);
+        chrome.storage.local.set({ startButton3Enabled: true, stopButton3Enabled: false });
+      }
+    });
+  });
+
   chrome.storage.local.get(['startButtonEnabled', 'stopButtonEnabled'], ({ startButtonEnabled, stopButtonEnabled }) => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       const url = activeTab?.url || '';
@@ -142,6 +178,19 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButtons2(startButton2Enabled === true, stopButton2Enabled === true);  // Enable startButton2 when on the specified link
       } else {
         toggleButtons2(false, false);
+      }
+    });
+  });
+
+  chrome.storage.local.get(['startButton3Enabled', 'stopButton3Enabled'], ({ startButton3Enabled, stopButton3Enabled }) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      const url = activeTab?.url || '';
+      const isWatchTab = isYouTubeWatchTab(url);
+
+      if (isWatchTab && url.startsWith('https://www.youtube.com/playlist?list=WL')) {
+        toggleButtons3(startButton3Enabled !== false, stopButton3Enabled === true);
+      } else {
+        toggleButtons3(false, false);
       }
     });
   });
