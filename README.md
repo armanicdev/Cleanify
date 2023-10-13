@@ -38,10 +38,6 @@ Current Version: 1.0.0
 
 Support Cleanifier's development by [buying me a coffee](https://www.buymeacoffee.com/arman.cron)!
 
-## Contributing
-
-Fork the repository and create a pull request if you'd like to contribute.
-
 ## Issues and Support
 
 [Open an issue](https://github.com/armanicdev/Cleanifier/issues) for problems or questions.
