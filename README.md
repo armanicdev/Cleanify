@@ -39,6 +39,14 @@ Cleanify is a browser extension designed to help users manage and clean up their
 
 Current Version: 1.0.0
 
+## Buy Me a Coffee ☕️
+
+If you find Cleanify helpful and want to support its development, consider buying me a coffee!
+
+[![Buy Me a Coffee](https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js)](https://www.buymeacoffee.com/arman.cron)
+
+Your support keeps the coffee flowing and the code improving. Thank you! 🙌
+
 ## Contributing
 
 If you'd like to contribute to Cleanify, please fork the repository and create a pull request. We welcome your contributions!
