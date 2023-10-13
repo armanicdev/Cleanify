@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Cleanifier",
+  "name": "Cleanify",
   "version": "1.0",
   "description": "Effortlessly manage YouTube subscriptions, likes, watch later, and more.",
   "permissions": [
