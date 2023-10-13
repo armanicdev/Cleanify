@@ -20,11 +20,6 @@ Cleanifier is a straightforward browser extension designed to simplify YouTube m
 1. Visit [Chrome Web Store](https://chrome.google.com/webstore/) or [Edge Add-ons](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home/).
 2. Search for "Cleanifier" and follow the installation instructions.
 
-### Firefox
-
-1. Visit [Mozilla Add-ons](https://addons.mozilla.org/).
-2. Search for "Cleanifier" and follow the installation instructions.
-
 ### Manual Installation (Other Browsers)
 
 1. Download the extension zip from [Releases](https://github.com/armanicdev/Cleanifier/releases).
@@ -33,6 +28,8 @@ Cleanifier is a straightforward browser extension designed to simplify YouTube m
 4. Enable "Developer mode."
 5. Click "Load unpacked" and select the unzipped folder.
 
+**Note: Firefox is currently not supported. We apologize for any inconvenience.**
+
 ## Version
 
 Current Version: 1.0.0
@@ -40,10 +37,6 @@ Current Version: 1.0.0
 ## Buy Me a Coffee ☕️
 
 Support Cleanifier's development by [buying me a coffee](https://www.buymeacoffee.com/arman.cron)!
-
-## Contributing
-
-Fork the repository and create a pull request if you'd like to contribute.
 
 ## Issues and Support
 
