@@ -38,7 +38,8 @@
 }
 
 .separator {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #DDDDDD;
+    /* Adjusted line color */
     margin-bottom: 10px;
 }
 
@@ -165,6 +166,8 @@ body:not(:hover) .dropdown-content {
     border-radius: 10px;
     transition: opacity .3s ease, transform .3s ease;
     color: var(--grid-text-light);
+    font-weight: normal;
+    /* Set font weight to normal */
 }
 
 .grid-item:hover {
@@ -188,7 +191,8 @@ body:not(:hover) .dropdown-content {
 .buy-premium,
 .grid-item,
 .popup-title {
-    font-family: "Product Sans Medium", sans-serif;
+    font-family: "Product Sans Regular", sans-serif;
+    /* Set font to regular */
 }
 
 @keyframes shine {
@@ -272,7 +276,6 @@ body:not(:hover) .dropdown-content {
         filter: brightness(0) invert(1);
     }
 }
-
 
 .custom-button {
     padding: 20px;
