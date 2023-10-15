@@ -4,21 +4,21 @@
 
 ## Overview
 
-Cleanify is a straightforward browser extension designed to simplify YouTube management. Easily organize your subscriptions, likes, and watch later lists. Anticipate more features in future updates.
+Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates.
 
 ## Features
 
 - **Subscription Cleanup:** Unsubscribe from unwanted channels effortlessly.
 - **Like Management:** Efficiently manage your liked videos.
 - **Watch Later Cleanup:** Keep your Watch Later list organized.
-- **Advanced Features:** Exciting updates are on the horizon.
+- **Advanced Features:** More enhancements coming soon.
 
 ## Installation
 
 ### Chrome and Edge
 
 1. Visit [Chrome Web Store](https://chrome.google.com/webstore/) or [Edge Add-ons](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home/).
-2. Search for "Cleanify" and follow the installation instructions.
+2. Search for "Cleanify" and follow installation instructions.
 
 ### Manual Installation (Other Browsers)
 
@@ -28,15 +28,15 @@ Cleanify is a straightforward browser extension designed to simplify YouTube man
 4. Enable "Developer mode."
 5. Click "Load unpacked" and select the unzipped folder.
 
-**Note: Cleanify currently does not support Firefox. We apologize for any inconvenience.**
+**Note: Cleanify is not compatible with Firefox at the moment. We apologize for any inconvenience.**
 
 ## Version
 
-Current Version: 1.0.0
+Current Version: 1.1
 
-## Buy Me a Coffee ☕️
+## Support Development ☕️
 
-Support Cleanify's development by [buying me a coffee](https://www.buymeacoffee.com/arman.cron)!
+Consider [buying me a coffee](https://www.buymeacoffee.com/arman.cron) to support Cleanify's development!
 
 ## Contributing
 
@@ -44,7 +44,7 @@ Fork the repository and create a pull request if you'd like to contribute.
 
 ## Issues and Support
 
-[Open an issue](https://github.com/armanicdev/Cleanify/issues) for problems or questions.
+For problems or questions, please [open an issue](https://github.com/armanicdev/Cleanify/issues).
 
 ## License
 
