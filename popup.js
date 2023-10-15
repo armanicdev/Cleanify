@@ -1,10 +1,5 @@
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
-  const pageToShow = document.getElementById(pageId);
-
-  if (!pageToShow) {
-    return;
-  }
 
   pages.forEach((page) => {
     page.style.opacity = '0';
@@ -12,46 +7,95 @@ function showPage(pageId) {
     page.style.position = 'absolute';
   });
 
-  pageToShow.style.display = 'block';
-  pageToShow.style.opacity = '1';
-  pageToShow.style.pointerEvents = 'auto';
-  pageToShow.style.position = 'relative';
+  const pageToShow = document.getElementById(pageId);
+
+  if (pageToShow) {
+    pageToShow.style.display = 'block';
+    setTimeout(() => {
+      pageToShow.style.opacity = '1';
+      pageToShow.style.pointerEvents = 'auto';
+      pageToShow.style.position = 'relative';
+    }, 0);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
   const stopButton = document.getElementById('stopButton');
-  const messageElement = document.getElementById('message');
   const backButton = document.getElementById('backButton');
   const gridItems = document.querySelectorAll('.grid-item');
   const startButton2 = document.getElementById('startButton2');
   const stopButton2 = document.getElementById('stopButton2');
   const startButton3 = document.getElementById('startButton3');
   const stopButton3 = document.getElementById('stopButton3');
-  const startButton4 = document.getElementById('startButton4');
   const stopButton4 = document.getElementById('stopButton4');
+  const startButtonCopy1 = document.getElementById('startButtonCopy1');
+  const startButtonCopy2 = document.getElementById('startButtonCopy2');
+  const startButtonCopy3 = document.getElementById('startButtonCopy3');
+
+  function hideButton(button) {
+    button.style.display = 'none';
+  }
+
+  function showButton(button) {
+    button.style.display = 'block';
+  }
 
   const toggleButtons = (startEnabled, stopEnabled) => {
-    startButton.classList.toggle('disabled', !startEnabled);
-    stopButton.classList.toggle('disabled', !stopEnabled);
+    if (startEnabled) {
+      showButton(startButton);
+      startButtonCopy1.style.display = 'none'; // Hide the copy when start is enabled
+    } else {
+      hideButton(startButton);
+    }
+
+    if (stopEnabled) {
+      showButton(stopButton);
+      startButtonCopy1.style.display = 'none'; // Hide the copy when start is enabled
+    } else {
+      hideButton(stopButton);
+    }
   };
 
   const toggleButtons2 = (startEnabled, stopEnabled) => {
-    startButton2.classList.toggle('disabled', !startEnabled);
-    stopButton2.classList.toggle('disabled', !stopEnabled);
+    if (startEnabled) {
+      showButton(startButton2);
+      startButtonCopy2.style.display = 'none'; // Hide the copy when start is enabled
+    } else {
+      hideButton(startButton2);
+    }
+
+    if (stopEnabled) {
+      showButton(stopButton2);
+      startButtonCopy2.style.display = 'none'; // Hide the copy when start is enabled
+
+    } else {
+      hideButton(stopButton2);
+    }
   };
 
   const toggleButtons3 = (startEnabled, stopEnabled) => {
-    startButton3.classList.toggle('disabled', !startEnabled);
-    stopButton3.classList.toggle('disabled', !stopEnabled);
+    if (startEnabled) {
+      showButton(startButton3);
+      startButtonCopy3.style.display = 'none'; // Hide the copy when start is enabled
+    } else {
+      hideButton(startButton3);
+    }
+
+    if (stopEnabled) {
+      showButton(stopButton3);
+      startButtonCopy3.style.display = 'none'; // Hide the copy when start is enabled
+
+    } else {
+      hideButton(stopButton3);
+    }
   };
 
-  const toggleButtons4 = (startEnabled, stopEnabled) => {
-    startButton4.classList.toggle('disabled', !startEnabled);
+  const toggleButtons4 = (stopEnabled) => {
     stopButton4.classList.toggle('disabled', !stopEnabled);
   };
 
-  toggleButtons4(false, false);
+  toggleButtons4(false);
 
   function isYouTubeFeedTab(url) {
     return url.startsWith('https://www.youtube.com/feed/channels');
@@ -100,6 +144,18 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.storage.local.set({ startButtonEnabled: false, stopButtonEnabled: true });
       }
     });
+  });
+
+  startButtonCopy1.addEventListener("click", function () {
+    window.open("https://www.youtube.com/feed/channels", "_blank");
+  });
+
+  startButtonCopy2.addEventListener("click", function () {
+    window.open("https://www.youtube.com/playlist?list=LL", "_blank");
+  });
+
+  startButtonCopy3.addEventListener("click", function () {
+    window.open("https://www.youtube.com/playlist?list=WL", "_blank");
   });
 
   stopButton.addEventListener('click', () => {
@@ -193,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function resetExtension() {
-  chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage, startButtonEnabled, stopButtonEnabled }) => {
+  chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage }) => {
     const pageToShow = activePage || 'defaultPage';
     showPage(pageToShow);
   });

@@ -4,7 +4,6 @@ let items;
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'startDislike') {
-        initializeDislike();
         startDislike();
     } else if (message.action === 'stopDislike') {
         stopDislike();
@@ -13,13 +12,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 function initializeDislike() {
     stopDislikeFlag = false;
-    dislikeIndex = 0;
     items = document.querySelectorAll(
         `#primary ytd-playlist-video-renderer yt-icon-button.dropdown-trigger > button[aria-label]`
     );
 }
 
 async function startDislike() {
+    initializeDislike(); // Initialize the items
     while (!stopDislikeFlag && dislikeIndex < items.length) {
         await dislikeVideo();
         dislikeIndex++;
@@ -46,7 +45,6 @@ async function dislikeVideo() {
 
     if (dropdown && dropdown.lastElementChild) {
         dropdown.lastElementChild.click();
-    } else {
     }
 }
 
