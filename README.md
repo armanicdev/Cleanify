@@ -5,7 +5,7 @@
 
 ## 🚀 Overview
 
-Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates.
+Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates, including support for Firefox!
 
 ## Features 🛠️
 
@@ -21,19 +21,20 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 1. Visit [Chrome Web Store](https://chrome.google.com/webstore/) or [Edge Add-ons](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home/).
 2. Search for "Cleanify" and follow installation instructions.
 
-### Manual Installation (Other Browsers)
+### Firefox
 
-1. Download the extension zip from [Releases](https://github.com/armanicdev/Cleanify/releases).
-2. Unzip.
-3. Open browser extension settings.
-4. Enable "Developer mode."
-5. Click "Load unpacked" and select the unzipped folder.
-
-**Note: Cleanify is not compatible with Firefox at the moment.**
+1. Visit [Firefox Add-ons](https://addons.mozilla.org/) or search for "Cleanify" within the Firefox Add-ons Manager.
+2. Click "Add to Firefox" and follow the installation instructions.
 
 ## Version 📦
 
 Current Version: 1.1
+
+**Compatibility:**
+- Chrome
+- Edge
+- Firefox
+
 
 ## Support Development ☕️
 
@@ -41,8 +42,8 @@ Consider [buying me a coffee](https://www.buymeacoffee.com/arman.cron) to suppor
 
 ## Contributing 🤝
 
-Fork the repository and create a pull request if you'd like to contribute.
+Fork the repository and create a pull request if you'd like to contribute. We especially welcome contributions related to Firefox compatibility.
 
 ## Issues and Support ❓
 
-For problems or questions, please [open an issue](https://github.com/armanicdev/Cleanify/issues).
+For problems or questions, please [open an issue](https://github.com/armanicdev/Cleanify/issues). We appreciate feedback on Firefox compatibility as well!
