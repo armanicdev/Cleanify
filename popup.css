@@ -10,14 +10,75 @@
     --text-primary-light: #212121;
 }
 
-.popup-container {
+@font-face {
+    font-family: "Product Sans Regular";
+    src: url('fonts/regular.ttf') format('truetype');
+}
+
+body {
+    font-family: "Product Sans Regular", sans-serif;
+    margin: 0;
     background-color: var(--background-light);
-    transition: background-color 0.3s ease-in-out;
+    transition: overflow 0.5s ease;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar {
+    width: 0rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
-    .popup-container {
+    body {
         background-color: var(--background-dark);
+    }
+}
+
+.extension-container,
+.popup-container,
+.header,
+.dot-container,
+.dropdown-content,
+.page,
+.grid-item,
+.popup-title,
+.buy-premium,
+.custom-button,
+.start-button.custom-button,
+.stop-button.custom-button,
+.popup-subtitle {
+    font-family: "Product Sans Regular", sans-serif;
+}
+
+.extension-container,
+.popup-container,
+.header,
+.dot-container,
+.page,
+.grid-item,
+.dropdown-content,
+.buy-premium,
+.custom-button,
+.popup-subtitle,
+.start-button.custom-button,
+.stop-button.custom-button {
+    transition: background-color 0.3s ease-in-out, opacity 0.2s ease-in-out, transform 0.3s ease;
+}
+
+.separator {
+    border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .separator {
+        border-bottom: 1px solid #414141;
     }
 }
 
@@ -34,17 +95,6 @@
 @media (prefers-color-scheme: dark) {
     .header {
         background-color: var(--background-dark);
-    }
-}
-
-.separator {
-    border-bottom: 1px solid #DDDDDD;
-    margin-bottom: 10px;
-}
-
-@media (prefers-color-scheme: dark) {
-    .separator {
-        border-bottom: 1px solid #414141;
     }
 }
 
@@ -137,8 +187,12 @@ a.support-link {
     color: inherit;
 }
 
+body.show-scrollbar {
+    overflow: auto;
+}
+
 .page {
-    display: none;
+    overflow: hidden;
     text-align: center;
     position: absolute;
     padding: 20px;
@@ -146,7 +200,6 @@ a.support-link {
     color: var(--text-light);
     width: 300px;
     height: auto;
-    transition: opacity 0.2s ease-in-out;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -168,7 +221,6 @@ a.support-link {
     font-size: 16px;
     cursor: pointer;
     border-radius: 10px;
-    transition: opacity .3s ease, transform .3s ease;
     color: var(--grid-text-light);
     font-weight: normal;
 }
@@ -191,12 +243,6 @@ a.support-link {
     }
 }
 
-.buy-premium,
-.grid-item,
-.popup-title {
-    font-family: "Product Sans Regular", sans-serif;
-}
-
 @keyframes shine {
 
     0%,
@@ -209,18 +255,22 @@ a.support-link {
     }
 }
 
-.buy-premium {
+.buy-premium,
+.grid-item,
+.popup-title {
     padding: 20px;
     font-size: 16px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.buy-premium {
     background: linear-gradient(45deg, gold, gold);
     margin-top: 10px;
     border-radius: 10px;
-    transition: transform .3s ease;
     background-size: 300% 100%;
     color: white;
-    position: relative;
-    overflow: hidden;
 }
 
 .buy-premium::before {
@@ -279,18 +329,16 @@ a.support-link {
     }
 }
 
-.custom-button {
+.custom-button,
+.start-button.custom-button,
+.stop-button.custom-button {
     padding: 20px;
     font-size: 16px;
     cursor: pointer;
-    background: white;
-    margin-top: 10px;
-    border-radius: 10px;
-    transition: transform .3s ease;
     background-size: 300% 100%;
-    color: var(--grid-text-light);
     position: relative;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .custom-button.disabled {
@@ -323,13 +371,6 @@ a.support-link {
 .start-button:hover,
 .stop-button:hover {
     transform: scale(1.04);
-}
-
-body {
-    font-family: "Product Sans Regular", sans-serif;
-    margin: 0;
-    padding: 0;
-    user-select: none;
 }
 
 input,
