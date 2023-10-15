@@ -42,8 +42,8 @@ Consider [buying me a coffee](https://www.buymeacoffee.com/arman.cron) to suppor
 
 ## Contributing 🤝
 
-Fork the repository and create a pull request if you'd like to contribute. We especially welcome contributions related to Firefox compatibility.
+Fork the repository and create a pull request if you'd like to contribute.
 
 ## Issues and Support ❓
 
-For problems or questions, please [open an issue](https://github.com/armanicdev/Cleanify/issues). We appreciate feedback on Firefox compatibility as well!
+For problems or questions, please [open an issue](https://github.com/armanicdev/Cleanify/issues).
