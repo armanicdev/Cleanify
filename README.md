@@ -1,6 +1,7 @@
 # Cleanify - YouTube Cleanup Extension
 
-![Cleanify Logo](https://i.imgur.com/1tmtK3Z.png)
+![Cleanify Logo](https://i.imgur.com/bPjFJAD.png#gh-dark-mode-only)
+![Cleanify Logo2](https://i.imgur.com/2KmBZAf.png#gh-light-mode-only)
 
 ## Overview
 
