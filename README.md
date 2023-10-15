@@ -1,5 +1,5 @@
-![Cleanify Logo](https://i.imgur.com/bPjFJAD.png#gh-dark-mode-only)
-![Cleanify Logo](https://i.imgur.com/2KmBZAf.png#gh-light-mode-only)
+![Cleanify Logo](https://i.imgur.com/bPjFJAD.png #gh-dark-mode-only)
+![Cleanify Logo](https://i.imgur.com/2KmBZAf.png #gh-light-mode-only)
 
 ## Overview
 
@@ -27,7 +27,7 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 4. Enable "Developer mode."
 5. Click "Load unpacked" and select the unzipped folder.
 
-**Note: Cleanify is not compatible with Firefox at the moment. We apologize for any inconvenience.**
+**Note: Cleanify is not compatible with Firefox at the moment.**
 
 ## Version
 
