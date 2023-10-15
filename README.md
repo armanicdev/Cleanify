@@ -1,7 +1,7 @@
 <!-- Dark Mode -->
-[![Cleanify Logo](https://i.imgur.com/bPjFJAD.png#gh-dark-mode-only)](https://www.youtube.com/@ArmanicYT)
+[![Cleanify Logo](https://i.imgur.com/bPjFJAD.png#gh-dark-mode-only)](https://www.youtube.com/@ArmanicYT#gh-dark-mode-only)
 <!-- Light Mode -->
-[![Cleanify Logo](https://i.imgur.com/2KmBZAf.png#gh-light-mode-only)](https://www.youtube.com/@ArmanicYT)
+[![Cleanify Logo](https://i.imgur.com/2KmBZAf.png#gh-light-mode-only)](https://www.youtube.com/@ArmanicYT#gh-light-mode-only)
 
 ## Overview
 
