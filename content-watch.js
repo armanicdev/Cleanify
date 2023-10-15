@@ -1,3 +1,5 @@
+// Remove all youtube watch later 
+
 let stopRemoving = false;
 
 chrome.runtime.onMessage.addListener(async (message) => {

@@ -1,3 +1,5 @@
+// Remove all youtube liked videos
+
 let stopDislikeFlag = false;
 let dislikeIndex = 0;
 let items;

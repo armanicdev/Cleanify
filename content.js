@@ -1,3 +1,5 @@
+// Remove all youtube subscriptions 
+
 let stopUnsubscribe = false;
 let unsubscribeInterval;
 
