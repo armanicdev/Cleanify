@@ -118,10 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const handleBackButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default behavior of the back button
     showPage('defaultPage');
     chrome.storage.local.set({ activePage: 'defaultPage' });
   };
+
 
   backButton.addEventListener('click', handleBackButtonClick);
   backButton2.addEventListener('click', handleBackButtonClick);
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startButtonCopy1.addEventListener("click", function () {
     window.open("https://www.youtube.com/feed/channels", "_blank");
-    toggleButtons1(true, false);
+    toggleButtons(true, false);
   });
 
   startButtonCopy2.addEventListener("click", function () {
