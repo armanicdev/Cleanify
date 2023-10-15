@@ -1,20 +1,20 @@
-<!-- Dark Mode -->
+<!-- Dark Mode 🌑 -->
 [![Cleanify Logo](https://i.imgur.com/bPjFJAD.png#gh-dark-mode-only)](https://www.youtube.com/@ArmanicYT#gh-dark-mode-only)
-<!-- Light Mode -->
+<!-- Light Mode ☀️ -->
 [![Cleanify Logo](https://i.imgur.com/2KmBZAf.png#gh-light-mode-only)](https://www.youtube.com/@ArmanicYT#gh-light-mode-only)
 
-## Overview
+## 🚀 Overview
 
 Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates.
 
-## Features
+## Features 🛠️
 
 - **Subscription Cleanup:** Remove all YouTube subscriptions with a single click.
 - **Like Management:** Efficiently manage your liked videos.
 - **Watch Later Cleanup:** Keep your Watch Later list organized.
 - **Advanced Features:** More enhancements coming soon.
 
-## Installation
+## Installation 📥
 
 ### Chrome and Edge
 
@@ -31,7 +31,7 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 
 **Note: Cleanify is not compatible with Firefox at the moment.**
 
-## Version
+## Version 📦
 
 Current Version: 1.1
 
@@ -39,14 +39,10 @@ Current Version: 1.1
 
 Consider [buying me a coffee](https://www.buymeacoffee.com/arman.cron) to support Cleanify's development!
 
-## Contributing
+## Contributing 🤝
 
 Fork the repository and create a pull request if you'd like to contribute.
 
-## Issues and Support
+## Issues and Support ❓
 
 For problems or questions, please [open an issue](https://github.com/armanicdev/Cleanify/issues).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
