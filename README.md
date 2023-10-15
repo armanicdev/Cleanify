@@ -5,7 +5,7 @@
 
 ## 🚀 Overview
 
-Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates, including support for Firefox!
+Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates.
 
 ## Features 🛠️
 
