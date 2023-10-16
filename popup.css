@@ -339,6 +339,7 @@ body.show-scrollbar {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
+    transition: opacity 0.5s ease;
 }
 
 .custom-button.disabled {

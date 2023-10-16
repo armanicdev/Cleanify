@@ -2,13 +2,13 @@ function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
 
   pages.forEach((page) => {
+    page.style.opacity = '0';
     page.style.display = page.id === pageId ? 'block' : 'none';
   });
 
   const pageToShow = document.getElementById(pageId);
 
   if (pageToShow) {
-    pageToShow.style.display = 'block';
     setTimeout(() => {
       pageToShow.style.opacity = '1';
       pageToShow.style.pointerEvents = 'auto';
@@ -42,31 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleButtons = (startEnabled, stopEnabled) => {
     if (startEnabled) {
       showButton(startButton);
-      startButtonCopy1.style.display = 'none'; // Hide the copy when start is enabled
+      startButtonCopy1.style.display = 'none';
     } else {
       hideButton(startButton);
     }
 
     if (stopEnabled) {
       showButton(stopButton);
-      startButtonCopy1.style.display = 'none'; // Hide the copy when start is enabled
+      startButtonCopy1.style.display = 'none';
     } else {
       hideButton(stopButton);
     }
   };
 
   const toggleButtons2 = (startEnabled, stopEnabled) => {
+
     if (startEnabled) {
       showButton(startButton2);
-      startButtonCopy2.style.display = 'none'; // Hide the copy when start is enabled
+      startButtonCopy2.style.display = 'none';
     } else {
       hideButton(startButton2);
     }
 
     if (stopEnabled) {
       showButton(stopButton2);
-      startButtonCopy2.style.display = 'none'; // Hide the copy when start is enabled
-
+      startButtonCopy2.style.display = 'none';
     } else {
       hideButton(stopButton2);
     }
@@ -75,15 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleButtons3 = (startEnabled, stopEnabled) => {
     if (startEnabled) {
       showButton(startButton3);
-      startButtonCopy3.style.display = 'none'; // Hide the copy when start is enabled
+      startButtonCopy3.style.display = 'none';
     } else {
       hideButton(startButton3);
     }
 
     if (stopEnabled) {
       showButton(stopButton3);
-      startButtonCopy3.style.display = 'none'; // Hide the copy when start is enabled
-
+      startButtonCopy3.style.display = 'none';
     } else {
       hideButton(stopButton3);
     }
@@ -230,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isLikeTab = isYouTubeLikeTab(url);
 
       if (isLikeTab && url.startsWith('https://www.youtube.com/playlist?list=LL')) {
-        toggleButtons2(startButton2Enabled === true, stopButton2Enabled === true);
+        toggleButtons2(startButton2Enabled !== false, stopButton2Enabled === true);
       } else {
         toggleButtons2(false, false);
       }
