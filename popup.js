@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const handleGridItemClick = (index) => {
     const pageId = `page${index + 1}`;
     showPage(pageId);
-    chrome.storage.local.set({ activePage: pageId });
+    browser.storage.local.set({ activePage: pageId });
   };
 
   gridItems.forEach((item, index) => {
@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.set({ activePage: 'defaultPage' });
   };
 
-
   backButton.addEventListener('click', handleBackButtonClick);
   backButton2.addEventListener('click', handleBackButtonClick);
   backButton3.addEventListener('click', handleBackButtonClick);
@@ -131,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('beforeunload', resetExtension);
   resetExtension();
 
-  chrome.tabs.onActivated.addListener(({ tabId }) => {
+  browser.tabs.onActivated.addListener(({ tabId }) => {
     checkYouTubeTab(tabId);
   });
 
