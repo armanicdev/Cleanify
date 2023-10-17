@@ -52,7 +52,6 @@ async function removeComments() {
         if (shouldStopDeleting) {
             return;
         }
-
         try {
             const deleteButton = element.querySelector(".VfPpkd-rymPhb-pZXsl, .VfPpkd-Bz112c-LgbsSe");
             if (deleteButton) {
