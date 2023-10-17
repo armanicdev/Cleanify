@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const stopButton2 = document.getElementById('stopButton2');
   const startButton3 = document.getElementById('startButton3');
   const stopButton3 = document.getElementById('stopButton3');
-  const startButtonCopy1 = document.getElementById('startButtonCopy1');
-  const startButtonCopy2 = document.getElementById('startButtonCopy2');
-  const startButtonCopy3 = document.getElementById('startButtonCopy3');
   const stopButton4 = document.getElementById('stopButton4');
   const startButton4 = document.getElementById('startButton4');
   const startButtonCopy4 = document.getElementById('startButtonCopy4');
+  const startButtonCopy1 = document.getElementById('startButtonCopy1');
+  const startButtonCopy2 = document.getElementById('startButtonCopy2');
+  const startButtonCopy3 = document.getElementById('startButtonCopy3');
 
   function hideButton(button) {
     button.style.display = 'none';
@@ -151,11 +151,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   startButton.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (isYouTubeFeedTab(activeTab?.url)) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
+        browser.tabs.sendMessage(activeTab.id, { action: 'startUnsubscribe' });
         toggleButtons(false, true);
-        chrome.storage.local.set({ startButtonEnabled: false, stopButtonEnabled: true });
+        browser.storage.local.set({ startButtonEnabled: false, stopButtonEnabled: true });
       }
     });
   });
@@ -181,77 +181,77 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   stopButton.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (!stopButton.classList.contains('disabled')) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
+        browser.tabs.sendMessage(activeTab.id, { action: 'stopUnsubscribe' });
         toggleButtons(true, false);
-        chrome.storage.local.set({ startButtonEnabled: true, stopButtonEnabled: false });
+        browser.storage.local.set({ startButtonEnabled: true, stopButtonEnabled: false });
       }
     });
   });
 
   startButton2.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, async ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, async ([activeTab]) => {
       if (isYouTubeLikeTab(activeTab?.url)) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'startDislike', tabId: activeTab.id });
+        browser.tabs.sendMessage(activeTab.id, { action: 'startDislike', tabId: activeTab.id });
         toggleButtons2(false, true);
-        chrome.storage.local.set({ startButton2Enabled: false, stopButton2Enabled: true });
+        browser.storage.local.set({ startButton2Enabled: false, stopButton2Enabled: true });
       }
     });
   });
 
   stopButton2.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (!stopButton2.classList.contains('disabled')) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'stopDislike', tabId: activeTab.id });
+        browser.tabs.sendMessage(activeTab.id, { action: 'stopDislike', tabId: activeTab.id });
         toggleButtons2(true, false);
-        chrome.storage.local.set({ startButton2Enabled: true, stopButton2Enabled: false });
+        browser.storage.local.set({ startButton2Enabled: true, stopButton2Enabled: false });
       }
     });
   });
 
   startButton3.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (isYouTubeWatchTab(activeTab?.url)) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'startNewAction', tabId: activeTab.id });
+        browser.tabs.sendMessage(activeTab.id, { action: 'startNewAction', tabId: activeTab.id });
         toggleButtons3(false, true);
-        chrome.storage.local.set({ startButton3Enabled: false, stopButton3Enabled: true });
+        browser.storage.local.set({ startButton3Enabled: false, stopButton3Enabled: true });
       }
     });
   });
 
   stopButton3.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (!stopButton3.classList.contains('disabled')) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'stopNewAction', tabId: activeTab.id });
+        browser.tabs.sendMessage(activeTab.id, { action: 'stopNewAction', tabId: activeTab.id });
         toggleButtons3(true, false);
-        chrome.storage.local.set({ startButton3Enabled: true, stopButton3Enabled: false });
+        browser.storage.local.set({ startButton3Enabled: true, stopButton3Enabled: false });
       }
     });
   });
 
   startButton4.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (isYouTubeCommentTab(activeTab?.url)) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'startComment', tabId: activeTab.id });
+        browser.tabs.sendMessage(activeTab.id, { action: 'startComment', tabId: activeTab.id });
         toggleButtons4(false, true);
-        chrome.storage.local.set({ startButton4Enabled: false, stopButton4Enabled: true });
+        browser.storage.local.set({ startButton4Enabled: false, stopButton4Enabled: true });
       }
     });
   });
 
   stopButton4.addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       if (!stopButton4.classList.contains('disabled')) {
-        chrome.tabs.sendMessage(activeTab.id, { action: 'stopComment', tabId: activeTab.id });
+        browser.tabs.sendMessage(activeTab.id, { action: 'stopComment', tabId: activeTab.id });
         toggleButtons4(true, false);
-        chrome.storage.local.set({ startButton4Enabled: true, stopButton4Enabled: false });
+        browser.storage.local.set({ startButton4Enabled: true, stopButton4Enabled: false });
       }
     });
   });
 
-  chrome.storage.local.get(['startButton4Enabled', 'stopButton4Enabled'], ({ startButton4Enabled, stopButton4Enabled }) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+  browser.storage.local.get(['startButton4Enabled', 'stopButton4Enabled'], ({ startButton4Enabled, stopButton4Enabled }) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       const url = activeTab?.url || '';
       if (url.startsWith('https://myactivity.google.com/page?hl=en-GB&utm_medium=web&utm_source=youtube&page=youtube_comments')) {
         toggleButtons4(startButton4Enabled !== false, stopButton4Enabled === true);
@@ -261,8 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  chrome.storage.local.get(['startButtonEnabled', 'stopButtonEnabled'], ({ startButtonEnabled, stopButtonEnabled }) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+  browser.storage.local.get(['startButtonEnabled', 'stopButtonEnabled'], ({ startButtonEnabled, stopButtonEnabled }) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       const url = activeTab?.url || '';
       const isYouTubeTab = isYouTubeFeedTab(url);
 
@@ -274,8 +274,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  chrome.storage.local.get(['startButton2Enabled', 'stopButton2Enabled'], ({ startButton2Enabled, stopButton2Enabled }) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+  browser.storage.local.get(['startButton2Enabled', 'stopButton2Enabled'], ({ startButton2Enabled, stopButton2Enabled }) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       const url = activeTab?.url || '';
       const isLikeTab = isYouTubeLikeTab(url);
 
@@ -287,8 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  chrome.storage.local.get(['startButton3Enabled', 'stopButton3Enabled'], ({ startButton3Enabled, stopButton3Enabled }) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+  browser.storage.local.get(['startButton3Enabled', 'stopButton3Enabled'], ({ startButton3Enabled, stopButton3Enabled }) => {
+    browser.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       const url = activeTab?.url || '';
       const isWatchTab = isYouTubeWatchTab(url);
 
@@ -302,14 +302,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function resetExtension() {
-  chrome.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage }) => {
+  browser.storage.local.get(['activePage', 'startButtonEnabled', 'stopButtonEnabled'], ({ activePage }) => {
     const pageToShow = activePage || 'defaultPage';
     showPage(pageToShow);
   });
 }
 
 function checkYouTubeTab(tabId) {
-  chrome.tabs.get(tabId, (tab) => {
+  browser.tabs.get(tabId, (tab) => {
     if (tab) {
       const url = tab.url || '';
       if (isYouTubeFeedTab(url)) {

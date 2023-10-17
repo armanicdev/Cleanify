@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButtonCopy2 = document.getElementById('startButtonCopy2');
   const startButtonCopy3 = document.getElementById('startButtonCopy3');
 
-
   function hideButton(button) {
     button.style.display = 'none';
   }
