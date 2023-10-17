@@ -7,8 +7,6 @@ chrome.runtime.onMessage.addListener(async (message) => {
         await removeComments();
     } else if (message.action === 'stopComment') {
         shouldStopDeleting = true;
-        console.log("Stopping comment removal.");
-        // Clear auto-scroll timeout if it's set
         clearTimeout(autoScrollTimeout);
     }
 });
@@ -52,7 +50,6 @@ async function removeComments() {
 
     async function deleteComment(element) {
         if (shouldStopDeleting) {
-            console.log("Stopping comment removal.");
             return;
         }
 
@@ -73,7 +70,6 @@ async function removeComments() {
         const commentList = document.querySelectorAll(commentSelector);
 
         if (commentList.length === 0) {
-            console.log("There are no comments, exiting.");
             return;
         }
 

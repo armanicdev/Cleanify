@@ -144,8 +144,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dot-container:hover .dot-icon {
-    transform: scale(1.04) rotate(10deg);
-    opacity: 0.9;
+    transform: scale(1.02) rotate(10deg);
+    opacity: 0.64;
 }
 
 .dropdown-content {
@@ -226,8 +226,8 @@ body.show-scrollbar {
 }
 
 .grid-item:hover {
-    opacity: 0.9;
-    transform: scale(1.04);
+    transform: scale(1.02);
+    opacity: 0.64;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -302,7 +302,8 @@ body.show-scrollbar {
 
 .buy-premium:hover {
     background-position: right bottom;
-    transform: scale(1.04);
+    transform: scale(1.02);
+    opacity: 0.64;
 }
 
 .buy-premium:hover::before {
@@ -339,12 +340,12 @@ body.show-scrollbar {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    transition: opacity 0.5s ease;
+    transition: background-color 0.3s ease-in-out, opacity 0.2s ease-in-out, transform 0.3s ease;
 }
 
 .custom-button.disabled {
     background-color: rgba(245, 245, 245, 0.5);
-    opacity: 0.5;
+    opacity: 0.64;
     cursor: not-allowed;
     color: #ccc;
 }
@@ -371,7 +372,8 @@ body.show-scrollbar {
 
 .start-button:hover,
 .stop-button:hover {
-    transform: scale(1.04);
+    transform: scale(1.02);
+    opacity: 0.64;
 }
 
 input,
