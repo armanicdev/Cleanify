@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function isYouTubeCommentTab(url) {
-    return url.startsWith('https://myactivity.google.com/page?hl=en-GB&utm_medium=web&utm_source=youtube&page=youtube_comments');
+    return url.startsWith('https://myactivity.google.com/page?hl=');
   }
 
   const handleGridItemClick = (index) => {
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.local.get(['startButton4Enabled', 'stopButton4Enabled'], ({ startButton4Enabled, stopButton4Enabled }) => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
       const url = activeTab?.url || '';
-      if (url.startsWith('https://myactivity.google.com/page?hl=en-GB&utm_medium=web&utm_source=youtube&page=youtube_comments')) {
+      if (url.startsWith('https://myactivity.google.com/page?hl=')) {
         toggleButtons4(startButton4Enabled !== false, stopButton4Enabled === true);
       } else {
         toggleButtons4(false, false);
