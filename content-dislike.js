@@ -1,5 +1,3 @@
-// Remove all youtube liked videos
-
 let stopDislikeFlag = false;
 let dislikeIndex = 0;
 let items;
@@ -20,7 +18,7 @@ function initializeDislike() {
 }
 
 async function startDislike() {
-    initializeDislike(); // Initialize the items
+    initializeDislike();
     while (!stopDislikeFlag && dislikeIndex < items.length) {
         await dislikeVideo();
         dislikeIndex++;

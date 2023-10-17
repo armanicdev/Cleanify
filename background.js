@@ -11,7 +11,9 @@ function isValidAction(action) {
     action === 'startDislike' ||
     action === 'stopDislike' ||
     action === 'startNewAction' ||
-    action === 'stopNewAction'
+    action === 'stopNewAction' ||
+    action === 'startComment' ||
+    action === 'stopComment'
   );
 }
 
@@ -23,7 +25,9 @@ function sendToContentScript(tabId, message) {
     },
     args: [message],
   });
-} chrome.runtime.onMessage.addListener((message, sender) => {
+}
+
+chrome.runtime.onMessage.addListener((message, sender) => {
   if (isValidAction(message.action)) {
     sendToContentScript(sender.tab.id, message);
   }

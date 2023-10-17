@@ -27,9 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButton3 = document.getElementById('startButton3');
   const stopButton3 = document.getElementById('stopButton3');
   const stopButton4 = document.getElementById('stopButton4');
+  const startButton4 = document.getElementById('startButton4');
+  const startButtonCopy4 = document.getElementById('startButtonCopy4');
   const startButtonCopy1 = document.getElementById('startButtonCopy1');
   const startButtonCopy2 = document.getElementById('startButtonCopy2');
   const startButtonCopy3 = document.getElementById('startButtonCopy3');
+
 
   function hideButton(button) {
     button.style.display = 'none';
@@ -88,11 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const toggleButtons4 = (stopEnabled) => {
-    stopButton4.classList.toggle('disabled', !stopEnabled);
-  };
+  const toggleButtons4 = (startEnabled, stopEnabled) => {
+    if (startEnabled) {
+      showButton(startButton4);
+      startButtonCopy4.style.display = 'none';
+    } else {
+      hideButton(startButton4);
+    }
 
-  toggleButtons4(false);
+    if (stopEnabled) {
+      showButton(stopButton4);
+      startButtonCopy4.style.display = 'none';
+    } else {
+      hideButton(stopButton4);
+    }
+  };
 
   function isYouTubeFeedTab(url) {
     return url.startsWith('https://www.youtube.com/feed/channels');
@@ -106,6 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return url.startsWith('https://www.youtube.com/playlist?list=WL');
   }
 
+  function isYouTubeCommentTab(url) {
+    return url.startsWith('https://myactivity.google.com/page?hl=en-GB&utm_medium=web&utm_source=youtube&page=youtube_comments');
+  }
+
   const handleGridItemClick = (index) => {
     const pageId = `page${index + 1}`;
     showPage(pageId);
@@ -117,11 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const handleBackButtonClick = (event) => {
-    event.preventDefault(); // Prevent the default behavior of the back button
+    event.preventDefault();
     showPage('defaultPage');
     chrome.storage.local.set({ activePage: 'defaultPage' });
   };
-
 
   backButton.addEventListener('click', handleBackButtonClick);
   backButton2.addEventListener('click', handleBackButtonClick);
@@ -158,6 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
   startButtonCopy3.addEventListener("click", function () {
     window.open("https://www.youtube.com/playlist?list=WL", "_blank");
     toggleButtons3(true, false);
+  });
+
+  startButtonCopy4.addEventListener("click", function () {
+    window.open("https://www.youtube.com/feed/history/comment_history", "_blank");
+    toggleButtons4(true, false);
   });
 
   stopButton.addEventListener('click', () => {
@@ -206,6 +227,37 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.tabs.sendMessage(activeTab.id, { action: 'stopNewAction', tabId: activeTab.id });
         toggleButtons3(true, false);
         chrome.storage.local.set({ startButton3Enabled: true, stopButton3Enabled: false });
+      }
+    });
+  });
+
+  startButton4.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (isYouTubeCommentTab(activeTab?.url)) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'startComment', tabId: activeTab.id });
+        toggleButtons4(false, true);
+        chrome.storage.local.set({ startButton4Enabled: false, stopButton4Enabled: true });
+      }
+    });
+  });
+
+  stopButton4.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      if (!stopButton4.classList.contains('disabled')) {
+        chrome.tabs.sendMessage(activeTab.id, { action: 'stopComment', tabId: activeTab.id });
+        toggleButtons4(true, false);
+        chrome.storage.local.set({ startButton4Enabled: true, stopButton4Enabled: false });
+      }
+    });
+  });
+
+  chrome.storage.local.get(['startButton4Enabled', 'stopButton4Enabled'], ({ startButton4Enabled, stopButton4Enabled }) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      const url = activeTab?.url || '';
+      if (url.startsWith('https://myactivity.google.com/page?hl=en-GB&utm_medium=web&utm_source=youtube&page=youtube_comments')) {
+        toggleButtons4(startButton4Enabled !== false, stopButton4Enabled === true);
+      } else {
+        toggleButtons4(false, false);
       }
     });
   });

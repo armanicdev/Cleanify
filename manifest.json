@@ -23,12 +23,14 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.youtube.com/*"
+        "https://www.youtube.com/*",
+        "https://myactivity.google.com/page?hl=*"
       ],
       "js": [
         "content.js",
         "content-dislike.js",
-        "content-watch.js"
+        "content-watch.js",
+        "content-comment.js"
       ],
       "run_at": "document_end"
     }
