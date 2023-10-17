@@ -30,8 +30,8 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 2. Click "Add to Firefox" and follow the installation instructions.
 
 ## Compatibility:
-- Chrome
-- Edge
+- Google Chrome
+- Microsoft Edge
 - Firefox
 
 ## Support Development ☕️
