@@ -1,71 +1,90 @@
-var stopDeleting = false;
+let shouldStopDeleting = false;
+let autoScrollTimeout;
 
 chrome.runtime.onMessage.addListener(async (message) => {
     if (message.action === 'startComment') {
-        stopDeleting = false;
+        shouldStopDeleting = false;
         await removeComments();
     } else if (message.action === 'stopComment') {
-        stopDeleting = true;
+        shouldStopDeleting = true;
+        console.log("Stopping comment removal.");
+        // Clear auto-scroll timeout if it's set
+        clearTimeout(autoScrollTimeout);
     }
 });
 
 async function removeComments() {
-    const DELAY = 5000;
-    const PAUSE = 5000;
-    const COMMENT_SELECTOR = ".YxbmAc";
-    const SCROLL_THROTTLE_TIME = 200; // Throttle auto-scrolling
-    const AUTO_SCROLL_THRESHOLD = 3; // Scroll when only 3 or fewer comments are left
+    const commentRemovalDelay = 5000;
+    const pauseBetweenRemovals = 5000;
+    const commentSelector = ".YxbmAc";
+    const scrollThrottleTime = 200;
+    const autoScrollThreshold = 3;
+
+    const promisifiedTimeout = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    function debounce(func, wait) {
+        let timeout;
+        return function () {
+            const context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                timeout = null;
+                func.apply(context, args);
+            }, wait);
+        };
+    }
+
+    const debouncedAutoScroll = debounce(autoScroll, scrollThrottleTime);
 
     function autoScroll() {
         let lastScrollTime = 0;
+        const currentTime = Date.now();
 
-        function scroll() {
-            const currentTime = Date.now();
-            if (currentTime - lastScrollTime >= SCROLL_THROTTLE_TIME) {
-                window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-                lastScrollTime = currentTime;
-            }
-            if (!stopDeleting) {
-                window.requestAnimationFrame(scroll);
-            }
+        if (currentTime - lastScrollTime >= scrollThrottleTime) {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+            lastScrollTime = currentTime;
         }
 
-        if (!stopDeleting) {
-            scroll();
+        if (!shouldStopDeleting) {
+            autoScrollTimeout = setTimeout(debouncedAutoScroll, scrollThrottleTime);
         }
     }
 
     async function deleteComment(element) {
-        if (stopDeleting) {
+        if (shouldStopDeleting) {
             console.log("Stopping comment removal.");
             return;
         }
 
         try {
-            const deleteButton = element.querySelector(".VfPpkd-rymPhb-pZXsl") || element.querySelector(".VfPpkd-Bz112c-LgbsSe");
-            deleteButton.click();
-            await new Promise(resolve => setTimeout(resolve, DELAY));
+            const deleteButton = element.querySelector(".VfPpkd-rymPhb-pZXsl, .VfPpkd-Bz112c-LgbsSe");
+            if (deleteButton) {
+                deleteButton.click();
+                await promisifiedTimeout(commentRemovalDelay);
+            } else {
+                console.warn("Delete button not found for the comment:", element);
+            }
         } catch (error) {
-            console.error("Error deleting comment:", error);
+            console.error("Error deleting comment:", error, element);
         }
     }
 
     async function removeCommentsSequentially() {
-        for (let i = 0; i < myList.length; i++) {
-            await deleteComment(myList[i]);
+        const commentList = document.querySelectorAll(commentSelector);
 
-            if (i < myList.length - 1 && (myList.length - i - 1) <= AUTO_SCROLL_THRESHOLD) {
-                autoScroll();
-                await new Promise(resolve => setTimeout(resolve, PAUSE));
+        if (commentList.length === 0) {
+            console.log("There are no comments, exiting.");
+            return;
+        }
+
+        for (let i = 0; i < commentList.length && !shouldStopDeleting; i++) {
+            await deleteComment(commentList[i]);
+
+            if (i < commentList.length - 1 && (commentList.length - i - 1) <= autoScrollThreshold) {
+                debouncedAutoScroll();
+                await promisifiedTimeout(pauseBetweenRemovals);
             }
         }
-    }
-
-    const myList = document.querySelectorAll(COMMENT_SELECTOR);
-
-    if (myList.length === 0) {
-        console.log("There are no comments, exiting.");
-        return;
     }
 
     await removeCommentsSequentially();
