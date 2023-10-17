@@ -29,7 +29,7 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 
 ## Version 📦
 
-[![AGPL License](https://img.shields.io/badge/Version-1.2-red.svg)](http://www.gnu.org/licenses/agpl-3.0)
+[![AGPL License](https://img.shields.io/badge/Version-1.2-red.svg)]
 
 ## Compatibility:
 - Chrome
