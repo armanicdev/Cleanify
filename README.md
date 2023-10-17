@@ -3,6 +3,8 @@
 <!-- Light Mode ☀️ -->
 [![Cleanify Logo](https://i.imgur.com/2KmBZAf.png#gh-light-mode-only)](https://www.youtube.com/@ArmanicYT#gh-light-mode-only)
 
+![AGPL License](https://img.shields.io/badge/Version-1.2-red.svg)
+
 ## 🚀 Overview
 
 Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates.
@@ -26,10 +28,6 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 
 1. Visit [Firefox Add-ons](https://addons.mozilla.org/) or search for "Cleanify" within the Firefox Add-ons Manager.
 2. Click "Add to Firefox" and follow the installation instructions.
-
-## Version 📦
-
-![AGPL License](https://img.shields.io/badge/Version-1.2-red.svg)
 
 ## Compatibility:
 - Chrome
