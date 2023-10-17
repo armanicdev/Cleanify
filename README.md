@@ -14,7 +14,7 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 - **Subscription Cleanup:** Remove all YouTube subscriptions with a single click.
 - **Like Management:** Efficiently manage your liked videos.
 - **Watch Later Cleanup:** Keep your Watch Later list organized.
-- **Comment Removal:** Now with the ability to remove comments for a cleaner experience.
+- **Comment Removal:** Now with the ability to remove comments.
 - **Advanced Features:** More enhancements coming soon.
 
 ## Installation 📥
