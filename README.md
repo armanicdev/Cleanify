@@ -5,6 +5,8 @@
 
 ![AGPL License](https://img.shields.io/badge/Version-1.2-red.svg)
 
+<a href="https://www.producthunt.com/posts/cleanify-extention?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cleanify&#0045;extention" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=422345&theme=light" alt="Cleanify&#0032;Extention - YouTube&#0032;Management&#0032;Tool | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 ## 🚀 Overview
 
 Cleanify is a simple browser extension designed to declutter your YouTube experience. Organize your subscriptions, liked videos, and watch later list with ease. Stay tuned for exciting future updates.
