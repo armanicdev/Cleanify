@@ -35,10 +35,6 @@ Cleanify is a simple browser extension designed to declutter your YouTube experi
 - Microsoft Edge
 - Firefox
 
-## Support Development ☕️
-
-Consider [buying me a coffee](https://www.buymeacoffee.com/arman.cron) to support Cleanify's development!
-
 ## Contributing 🤝
 
 Fork the repository and create a pull request if you'd like to contribute.
